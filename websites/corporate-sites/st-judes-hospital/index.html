@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>St. Jude's Hospital - Advanced Healthcare</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCXd/XP=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Custom styles for Hospital Theme */
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: #4a4a4a;
+        background-color: #f8fafd; /* Very light blue/grey background */
+        line-height: 1.7;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'Montserrat', sans-serif;
+        color: #1a2a4b; /* Dark blue heading */
+        font-weight: 700;
+      }
+
+      .top-bar {
+        background-color: #0d6efd; /* Bootstrap primary blue */
+        color: white;
+        font-size: 0.9rem;
+        padding: 8px 0;
+      }
+      .top-bar .info-item i {
+        margin-right: 8px;
+      }
+
+      .navbar-brand {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #0d6efd !important; /* Brand color */
+      }
+      .navbar-brand i {
+        color: #28a745; /* Green for cross icon */
+      }
+
+      .navbar-nav .nav-link {
+        font-weight: 500;
+        color: #343a40 !important;
+        transition: color 0.3s ease;
+      }
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: #0d6efd !important;
+      }
+      .navbar-toggler {
+        border: none;
+      }
+
+      .hero-carousel .carousel-item {
+        height: 80vh; /* Adjust as needed */
+        min-height: 500px;
+        background: no-repeat center center scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        position: relative;
+      }
+      .hero-carousel .carousel-item::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 52, 102, 0.6); /* Dark blue overlay */
+      }
+      .hero-carousel .carousel-caption {
+        z-index: 10;
+        bottom: 20%;
+      }
+      .hero-carousel .carousel-caption h5 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      }
+      .hero-carousel .carousel-caption p {
+        font-size: 1.3rem;
+        color: #f8f9fa;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        max-width: 800px;
+        margin: 0 auto 2rem;
+      }
+
+      .section-padding {
+        padding: 80px 0;
+      }
+      .section-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 3.5rem;
+        color: #1a2a4b;
+        position: relative;
+        text-align: center;
+      }
+      .section-title::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -15px;
+        width: 100px;
+        height: 5px;
+        background-color: #0d6efd; /* Bootstrap primary blue */
+        border-radius: 3px;
+      }
+
+      .quick-links .card {
+        border: none;
+        border-radius: 1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .quick-links .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+      }
+      .quick-links .card-icon {
+        font-size: 3rem;
+        color: #0d6efd;
+        margin-bottom: 1rem;
+      }
+
+      .service-card .card,
+      .department-card .card,
+      .doctor-card .card,
+      .news-card .card {
+        border: none;
+        border-radius: 1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .service-card .card:hover,
+      .department-card .card:hover,
+      .doctor-card .card:hover,
+      .news-card .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1) !important;
+      }
+      .service-card .card-body i {
+        font-size: 2.5rem;
+        color: #0d6efd;
+        margin-bottom: 1rem;
+      }
+      .department-card .card-body i {
+        font-size: 2.5rem;
+        color: #28a745; /* Green for department icons */
+        margin-bottom: 1rem;
+      }
+
+      .doctor-card .card-img-top {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #0d6efd;
+        margin: 1.5rem auto 1rem;
+      }
+
+      .testimonial-card {
+        background-color: #e6f2ff; /* Light blue background */
+        border-left: 6px solid #0d6efd;
+        border-radius: 0.75rem;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+        margin-bottom: 1.5rem; /* For spacing between testimonials */
+      }
+      .testimonial-img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #28a745;
+      }
+
+      .news-card .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+      }
+
+      .footer-widget h5 {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+      .footer-widget ul {
+        list-style: none;
+        padding: 0;
+      }
+      .footer-widget ul li a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: block;
+        margin-bottom: 8px;
+      }
+      .footer-widget ul li a:hover {
+        color: white;
+      }
+      .footer-widget p {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .footer-widget .social-links a {
+        color: white;
+        font-size: 1.2rem;
+        margin-right: 15px;
+        transition: color 0.3s ease;
+      }
+      .footer-widget .social-links a:hover {
+        color: #28a745; /* Green for social icons on hover */
+      }
+
+      .bottom-footer {
+        background-color: #0b5ed7; /* Slightly darker blue */
+        padding: 15px 0;
+        font-size: 0.9rem;
+      }
+      .bottom-footer a {
+        color: white;
+        text-decoration: none;
+      }
+      .bottom-footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 991.98px) {
+        .navbar-nav {
+          text-align: center;
+          background-color: #f8fafd;
+          padding-bottom: 15px;
+        }
+        .navbar-nav .nav-item {
+          margin: 0.5rem 0;
+        }
+        .navbar-nav .nav-link {
+          padding: 0.75rem 0;
+        }
+        .hero-carousel .carousel-caption h5 {
+          font-size: 2.5rem;
+        }
+        .hero-carousel .carousel-caption p {
+          font-size: 1rem;
+        }
+        .section-title {
+          font-size: 2rem;
+        }
+        .quick-links .card-body,
+        .service-card .card-body,
+        .department-card .card-body,
+        .doctor-card .card-body {
+          padding: 2rem 1.5rem !important;
+        }
+      }
+      @media (max-width: 767.98px) {
+        .top-bar {
+          display: none; /* Hide top bar on very small screens */
+        }
+        .hero-carousel .carousel-item {
+          height: 60vh;
+          min-height: 400px;
+        }
+        .hero-carousel .carousel-caption {
+          bottom: 10%;
+        }
+        .hero-carousel .carousel-caption h5 {
+          font-size: 2rem;
+        }
+        .hero-carousel .carousel-caption p {
+          font-size: 0.9rem;
+        }
+        .section-padding {
+          padding: 60px 0;
+        }
+        .section-title {
+          font-size: 2.2rem;
+          margin-bottom: 3rem;
+        }
+      }
+    </style>
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="100">
+    <div class="top-bar d-none d-md-block">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="top-left">
+          <span class="info-item me-4"
+            ><i class="fas fa-phone-alt"></i> +254 7XX XXX XXX</span
+          >
+          <span class="info-item"
+            ><i class="fas fa-envelope"></i> info@stjudeshospital.co.ke</span
+          >
+        </div>
+        <div class="top-right">
+          <span class="info-item me-4"
+            ><i class="fas fa-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</span
+          >
+          <a href="#" class="text-white text-decoration-none"
+            ><i class="fas fa-emergency"></i> Emergency Services</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm"
+      id="mainNavbar"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-plus-square"></i> St. Jude's Hospital
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#home"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownServices"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Services
+              </a>
+              <ul
+                class="dropdown-menu border-0 shadow"
+                aria-labelledby="navbarDropdownServices"
+              >
+                <li>
+                  <a class="dropdown-item" href="#services">General Medicine</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#services">Pediatrics</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#services">Cardiology</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#services"
+                    >View All Services</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#departments">Departments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#doctors">Our Doctors</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownPatients"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Patients
+              </a>
+              <ul
+                class="dropdown-menu border-0 shadow"
+                aria-labelledby="navbarDropdownPatients"
+              >
+                <li>
+                  <a class="dropdown-item" href="#patient-resources"
+                    >Patient Resources</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="#">Patient Portal</a></li>
+                <li><a class="dropdown-item" href="#">Online Payments</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item ms-lg-3">
+              <a class="btn btn-primary rounded-pill px-4" href="#appointment">
+                <i class="fas fa-calendar-alt me-2"></i>Book Appointment
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section
+        id="home"
+        class="hero-carousel carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#home"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#home"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#home"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div
+            class="carousel-item active"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1584982751601-c67b797966d5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            "
+          >
+            <div
+              class="carousel-caption d-flex align-items-center justify-content-center h-100"
+            >
+              <div class="text-center">
+                <h5>Caring For Your Health</h5>
+                <p>
+                  Providing advanced medical care with compassion and expertise.
+                </p>
+                <a
+                  href="#about"
+                  class="btn btn-outline-light btn-lg rounded-pill px-4 mt-3"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="carousel-item"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1576091160550-217355c25e16?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            "
+          >
+            <div
+              class="carousel-caption d-flex align-items-center justify-content-center h-100"
+            >
+              <div class="text-center">
+                <h5>Expert Medical Team</h5>
+                <p>Our dedicated doctors and staff are here for you 24/7.</p>
+                <a
+                  href="#doctors"
+                  class="btn btn-outline-light btn-lg rounded-pill px-4 mt-3"
+                  >Meet Our Doctors</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="carousel-item"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1628126868673-a6042ee86f1e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            "
+          >
+            <div
+              class="carousel-caption d-flex align-items-center justify-content-center h-100"
+            >
+              <div class="text-center">
+                <h5>Modern Facilities</h5>
+                <p>
+                  Equipped with state-of-the-art technology for accurate
+                  diagnosis and treatment.
+                </p>
+                <a
+                  href="#departments"
+                  class="btn btn-outline-light btn-lg rounded-pill px-4 mt-3"
+                  >Explore Departments</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#home"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#home"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </section>
+
+      <section class="quick-links py-5 bg-light">
+        <div class="container">
+          <div
+            class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 text-center"
+          >
+            <div class="col">
+              <div class="card shadow-sm p-4 h-100">
+                <i class="card-icon fas fa-calendar-check mb-3"></i>
+                <h4 class="h5 fw-bold">Book Appointment</h4>
+                <p class="text-muted small">Schedule your visit online.</p>
+                <a
+                  href="#appointment"
+                  class="btn btn-outline-primary btn-sm rounded-pill mt-auto"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm p-4 h-100">
+                <i class="card-icon fas fa-user-md mb-3"></i>
+                <h4 class="h5 fw-bold">Find a Doctor</h4>
+                <p class="text-muted small">
+                  Search our directory of specialists.
+                </p>
+                <a
+                  href="#doctors"
+                  class="btn btn-outline-primary btn-sm rounded-pill mt-auto"
+                  >Search</a
+                >
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm p-4 h-100">
+                <i class="card-icon fas fa-file-medical-alt mb-3"></i>
+                <h4 class="h5 fw-bold">Patient Portal</h4>
+                <p class="text-muted small">Access your health records.</p>
+                <a
+                  href="#"
+                  class="btn btn-outline-primary btn-sm rounded-pill mt-auto"
+                  >Login</a
+                >
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm p-4 h-100">
+                <i class="card-icon fas fa-hospital-user mb-3"></i>
+                <h4 class="h5 fw-bold">Emergency Services</h4>
+                <p class="text-muted small">Immediate medical attention.</p>
+                <a
+                  href="tel:+2547XXXXXXXX"
+                  class="btn btn-danger btn-sm rounded-pill mt-auto"
+                  >Call Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section-padding">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+              <img
+                src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="img-fluid rounded-4 shadow-lg"
+                alt="Hospital interior and staff"
+              />
+            </div>
+            <div class="col-lg-6">
+              <h2 class="section-title text-center text-lg-start mb-4">
+                About St. Jude's Hospital
+              </h2>
+              <p class="lead text-muted mb-4">
+                St. Jude's Hospital has been a beacon of health and healing in
+                our community for over 30 years. We are committed to delivering
+                comprehensive, patient-centered care with excellence and
+                compassion.
+              </p>
+              <p class="text-muted mb-4">
+                Our state-of-the-art facilities, combined with a team of highly
+                skilled and dedicated medical professionals, ensure that you
+                receive the best possible treatment and support. We embrace
+                innovation and continuous improvement to meet the evolving
+                healthcare needs of our patients.
+              </p>
+              <ul class="list-unstyled text-muted mb-4">
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i> Advanced
+                  Medical Technology
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  Board-Certified Specialists
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i> Patient
+                  Safety & Comfort
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  Community Health Initiatives
+                </li>
+              </ul>
+              <a href="#contact" class="btn btn-primary rounded-pill px-4 py-2"
+                >Contact Our Team</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section-padding bg-light">
+        <div class="container">
+          <h2 class="section-title">Our Comprehensive Services</h2>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col service-card">
+              <div class="card shadow-sm text-center p-4 h-100">
+                <div class="card-body">
+                  <i class="fas fa-heartbeat mb-3"></i>
+                  <h3 class="h5 fw-bold">Cardiology</h3>
+                  <p class="card-text text-muted">
+                    Expert care for heart conditions, including diagnostics and
+                    treatment.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col service-card">
+              <div class="card shadow-sm text-center p-4 h-100">
+                <div class="card-body">
+                  <i class="fas fa-child mb-3"></i>
+                  <h3 class="h5 fw-bold">Pediatrics</h3>
+                  <p class="card-text text-muted">
+                    Specialized care for infants, children, and adolescents.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col service-card">
+              <div class="card shadow-sm text-center p-4 h-100">
+                <div class="card-body">
+                  <i class="fas fa-brain mb-3"></i>
+                  <h3 class="h5 fw-bold">Neurology</h3>
+                  <p class="card-text text-muted">
+                    Diagnosis and treatment of disorders of the nervous system.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col service-card">
+              <div class="card shadow-sm text-center p-4 h-100">
+                <div class="card-body">
+                  <i class="fas fa-tooth mb-3"></i>
+                  <h3 class="h5 fw-bold">Dentistry</h3>
+                  <p class="card-text text-muted">
+                    Comprehensive oral health services for all ages.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col service-card">
+              <div class="card shadow-sm text-center p-4 h-100">
+                <div class="card-body">
+                  <i class="fas fa-bone mb-3"></i>
+                  <h3 class="h5 fw-bold">Orthopedics</h3>
+                  <p class="card-text text-muted">
+                    Treatment for musculoskeletal system injuries and diseases.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col service-card">
+              <div class="card shadow-sm text-center p-4 h-100">
+                <div class="card-body">
+                  <i class="fas fa-dna mb-3"></i>
+                  <h3 class="h5 fw-bold">Pathology</h3>
+                  <p class="card-text text-muted">
+                    Laboratory services for accurate disease diagnosis.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="departments" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">Our Specialized Departments</h2>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="col department-card">
+              <div class="card shadow-sm text-center p-4 h-100">
+                <i class="fas fa-ambulance mb-3"></i>
+                <h3 class="h5 fw-bold">Emergency & Trauma</h3>
+                <p class="text-muted small">24/7 critical care unit.</p>
+              </div>
+            </div>
+            <div class="col department-card">
+              <div class="card shadow-sm text-center p-4 h-100">
+                <i class="fas fa-lungs mb-3"></i>
+                <h3 class="h5 fw-bold">Pulmonology</h3>
+                <p class="text-muted small">Respiratory system disorders.</p>
+              </div>
+            </div>
+            <div class="col department-card">
+              <div class="card shadow-sm text-center p-4 h-100">
+                <i class="fas fa-femur-bone mb-3"></i>
+                <h3 class="h5 fw-bold">Orthopedic Surgery</h3>
+                <p class="text-muted small">
+                  Advanced bone and joint surgeries.
+                </p>
+              </div>
+            </div>
+            <div class="col department-card">
+              <div class="card shadow-sm text-center p-4 h-100">
+                <i class="fas fa-capsules mb-3"></i>
+                <h3 class="h5 fw-bold">Pharmacy</h3>
+                <p class="text-muted small">
+                  Well-stocked medication dispensing.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="doctors" class="section-padding bg-light">
+        <div class="container">
+          <h2 class="section-title">Meet Our Leading Doctors</h2>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="col doctor-card">
+              <div class="card shadow-sm text-center h-100">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  class="card-img-top mx-auto"
+                  alt="Dr. Alex Johnson"
+                />
+                <div class="card-body">
+                  <h4 class="h5 fw-bold mb-1">Dr. Alex Johnson</h4>
+                  <p class="text-primary small mb-2">Chief Cardiologist</p>
+                  <p class="text-muted small">
+                    Specializing in cardiac rhythm disorders and heart failure.
+                  </p>
+                  <div class="social-links mt-3">
+                    <a href="#" class="text-primary me-2"
+                      ><i class="fab fa-linkedin"></i
+                    ></a>
+                    <a href="#" class="text-primary"
+                      ><i class="fab fa-twitter-square"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col doctor-card">
+              <div class="card shadow-sm text-center h-100">
+                <img
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  class="card-img-top mx-auto"
+                  alt="Dr. Maria Rodriguez"
+                />
+                <div class="card-body">
+                  <h4 class="h5 fw-bold mb-1">Dr. Maria Rodriguez</h4>
+                  <p class="text-primary small mb-2">Head Pediatrician</p>
+                  <p class="text-muted small">
+                    Passionate about child health and development.
+                  </p>
+                  <div class="social-links mt-3">
+                    <a href="#" class="text-primary me-2"
+                      ><i class="fab fa-linkedin"></i
+                    ></a>
+                    <a href="#" class="text-primary"
+                      ><i class="fab fa-twitter-square"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col doctor-card">
+              <div class="card shadow-sm text-center h-100">
+                <img
+                  src="https://randomuser.me/api/portraits/men/7.jpg"
+                  class="card-img-top mx-auto"
+                  alt="Dr. Ben Carter"
+                />
+                <div class="card-body">
+                  <h4 class="h5 fw-bold mb-1">Dr. Ben Carter</h4>
+                  <p class="text-primary small mb-2">Senior Neurologist</p>
+                  <p class="text-muted small">
+                    Expert in stroke treatment and neurodegenerative diseases.
+                  </p>
+                  <div class="social-links mt-3">
+                    <a href="#" class="text-primary me-2"
+                      ><i class="fab fa-linkedin"></i
+                    ></a>
+                    <a href="#" class="text-primary"
+                      ><i class="fab fa-twitter-square"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col doctor-card">
+              <div class="card shadow-sm text-center h-100">
+                <img
+                  src="https://randomuser.me/api/portraits/women/62.jpg"
+                  class="card-img-top mx-auto"
+                  alt="Dr. Sarah Chen"
+                />
+                <div class="card-body">
+                  <h4 class="h5 fw-bold mb-1">Dr. Sarah Chen</h4>
+                  <p class="text-primary small mb-2">Emergency Physician</p>
+                  <p class="text-muted small">
+                    Dedicated to providing swift and effective emergency care.
+                  </p>
+                  <div class="social-links mt-3">
+                    <a href="#" class="text-primary me-2"
+                      ><i class="fab fa-linkedin"></i
+                    ></a>
+                    <a href="#" class="text-primary"
+                      ><i class="fab fa-twitter-square"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="patient-resources" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">Patient Resources & FAQs</h2>
+          <div class="accordion accordion-flush" id="patientFaqs">
+            <div class="accordion-item shadow-sm mb-3 rounded-3">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseOne"
+                >
+                  What documents do I need for my first visit?
+                </button>
+              </h2>
+              <div
+                id="flush-collapseOne"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingOne"
+                data-bs-parent="#patientFaqs"
+              >
+                <div class="accordion-body text-muted">
+                  Please bring your national ID/passport, insurance card (if
+                  applicable), and any relevant medical history or previous test
+                  results. Arriving 15 minutes early is recommended to complete
+                  registration forms.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item shadow-sm mb-3 rounded-3">
+              <h2 class="accordion-header" id="flush-headingTwo">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseTwo"
+                >
+                  How can I book an appointment?
+                </button>
+              </h2>
+              <div
+                id="flush-collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingTwo"
+                data-bs-parent="#patientFaqs"
+              >
+                <div class="accordion-body text-muted">
+                  You can book an appointment online via our website's
+                  <a href="#appointment">appointment section</a>, or by calling
+                  our reception at +254 7XX XXX XXX during working hours.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item shadow-sm mb-3 rounded-3">
+              <h2 class="accordion-header" id="flush-headingThree">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseThree"
+                >
+                  Do you accept my health insurance?
+                </button>
+              </h2>
+              <div
+                id="flush-collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingThree"
+                data-bs-parent="#patientFaqs"
+              >
+                <div class="accordion-body text-muted">
+                  We work with a wide range of insurance providers. Please
+                  contact our billing department or check our Patient Resources
+                  section for a full list of accepted insurance plans.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="section-padding bg-light">
+        <div class="container">
+          <h2 class="section-title">What Our Patients Say</h2>
+          <div
+            id="testimonialCarousel"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="d-flex justify-content-center">
+                  <div class="col-lg-8 col-md-10">
+                    <div class="testimonial-card p-4 mx-auto text-center">
+                      <div
+                        class="d-flex align-items-center justify-content-center mb-3"
+                      >
+                        <img
+                          src="https://randomuser.me/api/portraits/women/11.jpg"
+                          class="testimonial-img me-3"
+                          alt="Patient Sarah C."
+                        />
+                        <div>
+                          <h5 class="mb-0 text-primary">Sarah C.</h5>
+                          <p class="small text-muted">Nairobi Resident</p>
+                        </div>
+                      </div>
+                      <p class="fst-italic text-dark">
+                        "The care I received at St. Jude's was exceptional. The
+                        doctors and nurses were incredibly kind and
+                        professional, making my recovery smooth and comfortable.
+                        Truly grateful!"
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="d-flex justify-content-center">
+                  <div class="col-lg-8 col-md-10">
+                    <div class="testimonial-card p-4 mx-auto text-center">
+                      <div
+                        class="d-flex align-items-center justify-content-center mb-3"
+                      >
+                        <img
+                          src="https://randomuser.me/api/portraits/men/22.jpg"
+                          class="testimonial-img me-3"
+                          alt="Patient David K."
+                        />
+                        <div>
+                          <h5 class="mb-0 text-primary">David K.</h5>
+                          <p class="small text-muted">Businessman</p>
+                        </div>
+                      </div>
+                      <p class="fst-italic text-dark">
+                        "I was thoroughly impressed by the efficiency and
+                        cleanliness of the hospital. The staff was attentive,
+                        and my doctor explained everything clearly. A truly
+                        positive experience."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="d-flex justify-content-center">
+                  <div class="col-lg-8 col-md-10">
+                    <div class="testimonial-card p-4 mx-auto text-center">
+                      <div
+                        class="d-flex align-items-center justify-content-center mb-3"
+                      >
+                        <img
+                          src="https://randomuser.me/api/portraits/women/33.jpg"
+                          class="testimonial-img me-3"
+                          alt="Patient Emily W."
+                        />
+                        <div>
+                          <h5 class="mb-0 text-primary">Emily W.</h5>
+                          <p class="small text-muted">Teacher</p>
+                        </div>
+                      </div>
+                      <p class="fst-italic text-dark">
+                        "From the moment I walked in, I felt cared for. The
+                        pediatric department was wonderful with my child, making
+                        a potentially scary visit much easier. Thank you!"
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#testimonialCarousel"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#testimonialCarousel"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="news" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">Latest News & Health Tips</h2>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col news-card">
+              <div class="card shadow-sm h-100">
+                <img
+                  src="https://images.unsplash.com/photo-1579684385153-f725a3d07e99?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  class="card-img-top"
+                  alt="Community Health Workshop"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Community Health Workshop on Diabetes Management
+                  </h5>
+                  <p class="card-text text-muted small">
+                    Join us on June 15th for an informative session led by our
+                    endocrinologists.
+                  </p>
+                  <a
+                    href="#"
+                    class="btn btn-sm btn-outline-primary rounded-pill mt-2"
+                    >Read More</a
+                  >
+                </div>
+                <div
+                  class="card-footer bg-transparent border-0 text-muted small"
+                >
+                  <i class="fas fa-calendar-alt me-1"></i> May 20, 2025
+                </div>
+              </div>
+            </div>
+            <div class="col news-card">
+              <div class="card shadow-sm h-100">
+                <img
+                  src="https://images.unsplash.com/photo-1532938911079-c1ff26a6350e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  class="card-img-top"
+                  alt="New MRI Machine"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    St. Jude's Acquires New State-of-the-Art MRI Machine
+                  </h5>
+                  <p class="card-text text-muted small">
+                    Enhancing diagnostic capabilities for faster and more
+                    accurate results.
+                  </p>
+                  <a
+                    href="#"
+                    class="btn btn-sm btn-outline-primary rounded-pill mt-2"
+                    >Read More</a
+                  >
+                </div>
+                <div
+                  class="card-footer bg-transparent border-0 text-muted small"
+                >
+                  <i class="fas fa-calendar-alt me-1"></i> May 10, 2025
+                </div>
+              </div>
+            </div>
+            <div class="col news-card">
+              <div class="card shadow-sm h-100">
+                <img
+                  src="https://images.unsplash.com/photo-1542880786-5ca73356e4c7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  class="card-img-top"
+                  alt="Healthy Eating Tips"
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    5 Easy Tips for a Healthier Lifestyle
+                  </h5>
+                  <p class="card-text text-muted small">
+                    Simple habits you can adopt for better overall well-being.
+                  </p>
+                  <a
+                    href="#"
+                    class="btn btn-sm btn-outline-primary rounded-pill mt-2"
+                    >Read More</a
+                  >
+                </div>
+                <div
+                  class="card-footer bg-transparent border-0 text-muted small"
+                >
+                  <i class="fas fa-calendar-alt me-1"></i> April 25, 2025
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section-padding bg-light">
+        <div class="container">
+          <h2 class="section-title mb-5" id="appointment">
+            Contact Us & Book an Appointment
+          </h2>
+          <div class="row g-5">
+            <div class="col-lg-6">
+              <h3 class="mb-4 text-primary">Get in Touch</h3>
+              <p class="text-muted">
+                Feel free to reach out to us for any inquiries or to book an
+                appointment. Our team is ready to assist you.
+              </p>
+              <ul class="list-unstyled mb-4">
+                <li class="mb-3">
+                  <i class="fas fa-map-marker-alt text-primary me-3 fs-5"></i>
+                  123 Health Parkway, Nairobi, Kenya
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-phone-alt text-primary me-3 fs-5"></i>
+                  <a
+                    href="tel:+2547XXYYYZZZ"
+                    class="text-decoration-none text-dark"
+                    >+254 7XX XXX XXX</a
+                  >
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-envelope text-primary me-3 fs-5"></i>
+                  <a
+                    href="mailto:info@stjudeshospital.co.ke"
+                    class="text-decoration-none text-dark"
+                    >info@stjudeshospital.co.ke</a
+                  >
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-clock text-primary me-3 fs-5"></i> Mon - Fri:
+                  8:00 AM - 6:00 PM
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-clock text-primary me-3 fs-5"></i> Saturday:
+                  9:00 AM - 1:00 PM
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-times-circle text-primary me-3 fs-5"></i>
+                  Sunday: Closed
+                </li>
+              </ul>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.170457632616!2d36.70889267498705!3d-1.3090885986877843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1b40285a2f5f%3A0xc3b8a3e7e45300f8!2sKaren%20Square!5e0!3m2!1sen!2ske!4v1716757650383!5m2!1sen!2ske"
+                width="100%"
+                height="350"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="rounded-4 shadow-sm"
+              ></iframe>
+            </div>
+
+            <div class="col-lg-6">
+              <h3 class="mb-4 text-primary">Book Your Appointment</h3>
+              <form class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="formFullName" class="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="formFullName"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please enter your full name.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="formEmail" class="form-label"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="formEmail"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please enter a valid email address.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="formPhone" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="formPhone" />
+                </div>
+                <div class="mb-3">
+                  <label for="formDepartment" class="form-label"
+                    >Preferred Department</label
+                  >
+                  <select class="form-select" id="formDepartment" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option>General Medicine</option>
+                    <option>Cardiology</option>
+                    <option>Pediatrics</option>
+                    <option>Neurology</option>
+                    <option>Dentistry</option>
+                    <option>Emergency</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please select a department.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="formDate" class="form-label"
+                    >Preferred Date</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="formDate"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please choose a preferred date.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="formMessage" class="form-label"
+                    >Your Message (Optional)</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="formMessage"
+                    rows="4"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-lg rounded-pill px-5 mt-3"
+                >
+                  Submit Request
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-dark text-white pt-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4 footer-widget">
+            <h5 class="mb-4">About St. Jude's</h5>
+            <p>
+              Committed to providing high-quality, patient-centered healthcare
+              services to our community with integrity and compassion.
+            </p>
+            <div class="social-links mt-4">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="col-md-2 footer-widget">
+            <h5 class="mb-4">Quick Links</h5>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#doctors">Our Doctors</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 footer-widget">
+            <h5 class="mb-4">Departments</h5>
+            <ul>
+              <li><a href="#departments">Cardiology</a></li>
+              <li><a href="#departments">Pediatrics</a></li>
+              <li><a href="#departments">Neurology</a></li>
+              <li><a href="#departments">Orthopedics</a></li>
+              <li><a href="#departments">Emergency</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 footer-widget">
+            <h5 class="mb-4">Contact Info</h5>
+            <p>
+              <i class="fas fa-map-marker-alt me-2"></i> 123 Health Parkway,
+              Nairobi, Kenya
+            </p>
+            <p><i class="fas fa-phone-alt me-2"></i> +254 7XX XXX XXX</p>
+            <p>
+              <i class="fas fa-envelope me-2"></i> info@stjudeshospital.co.ke
+            </p>
+            <p><i class="fas fa-clock me-2"></i> Mon - Sat: 8 AM - 6 PM</p>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-footer text-center mt-5">
+        <div class="container">
+          <p class="mb-0">
+            &copy; 2025 St. Jude's Hospital. All rights reserved. |
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eEGFN7ZPFn0KAB"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Enable Bootstrap's form validation
+      ;(function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            'submit',
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+              form.classList.add('was-validated')
+            },
+            false
+          )
+        })
+      })()
+
+      // Activate Scrollspy for active navigation links
+      var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+        target: '#mainNavbar',
+        offset: 100, // Adjust this value if your fixed navbar height changes
+      })
+    </script>
+  </body>
+</html>

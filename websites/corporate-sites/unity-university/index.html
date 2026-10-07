@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unity University - Empowering Minds for a Brighter Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCXd/XP=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              heading: ['Montserrat', 'sans-serif'],
+            },
+            colors: {
+              primary: '#1E3A8A' /* Deep Blue */,
+              secondary: '#3498DB' /* Bright Blue */,
+              accent: '#F59E0B' /* Amber Yellow */,
+              darkgray: '#334155' /* Slate 800 */,
+              lightgray: '#F1F5F9' /* Slate 100 */,
+              textlight: '#6B7280' /* Gray 500 */,
+              darkblue: '#1A202C' /* Darker for backgrounds */,
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      /* A utility class for no-scroll on body when nav is active */
+      .overflow-hidden-when-nav-active {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="font-sans text-textlight bg-white antialiased">
+    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
+      <div
+        class="container mx-auto flex justify-between items-center px-4 md:px-8"
+      >
+        <a href="#" class="flex items-center">
+          <img
+            src="https://via.placeholder.com/40x40/1E3A8A/ffffff?text=UU"
+            alt="Unity University Logo"
+            class="mr-3 rounded-full"
+          />
+          <h1 class="text-3xl font-heading font-extrabold text-primary">
+            Unity University
+          </h1>
+        </a>
+        <nav class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+          <a
+            href="#home"
+            class="text-lg font-medium text-darkgray hover:text-secondary transition duration-300"
+            >Home</a
+          >
+          <a
+            href="#academics"
+            class="text-lg font-medium text-darkgray hover:text-secondary transition duration-300"
+            >Academics</a
+          >
+          <a
+            href="#admissions"
+            class="text-lg font-medium text-darkgray hover:text-secondary transition duration-300"
+            >Admissions</a
+          >
+          <a
+            href="#campus-life"
+            class="text-lg font-medium text-darkgray hover:text-secondary transition duration-300"
+            >Campus Life</a
+          >
+          <a
+            href="#research"
+            class="text-lg font-medium text-darkgray hover:text-secondary transition duration-300"
+            >Research</a
+          >
+          <a
+            href="#contact"
+            class="text-lg font-medium text-darkgray hover:text-secondary transition duration-300"
+            >Contact</a
+          >
+          <a
+            href="#"
+            class="bg-primary hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1"
+            >Apply Now</a
+          >
+        </nav>
+        <div class="md:hidden">
+          <button
+            id="menu-toggle"
+            class="text-darkgray hover:text-primary focus:outline-none focus:text-primary"
+          >
+            <i class="fas fa-bars text-3xl"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden fixed inset-0 bg-primary bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-6 transform translate-x-full transition-transform duration-300 ease-in-out"
+    >
+      <button
+        id="close-menu"
+        class="absolute top-6 right-6 text-white text-4xl focus:outline-none"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+      <nav class="flex flex-col items-center space-y-6">
+        <a
+          href="#home"
+          class="text-2xl text-white hover:text-accent transition duration-300 block py-2"
+          data-close-menu
+          >Home</a
+        >
+        <a
+          href="#academics"
+          class="text-2xl text-white hover:text-accent transition duration-300 block py-2"
+          data-close-menu
+          >Academics</a
+        >
+        <a
+          href="#admissions"
+          class="text-2xl text-white hover:text-accent transition duration-300 block py-2"
+          data-close-menu
+          >Admissions</a
+        >
+        <a
+          href="#campus-life"
+          class="text-2xl text-white hover:text-accent transition duration-300 block py-2"
+          data-close-menu
+          >Campus Life</a
+        >
+        <a
+          href="#research"
+          class="text-2xl text-white hover:text-accent transition duration-300 block py-2"
+          data-close-menu
+          >Research</a
+        >
+        <a
+          href="#contact"
+          class="text-2xl text-white hover:text-accent transition duration-300 block py-2"
+          data-close-menu
+          >Contact</a
+        >
+        <a
+          href="#"
+          class="bg-accent hover:bg-yellow-600 text-darkgray font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 mt-6"
+          data-close-menu
+          >Apply Now</a
+        >
+      </nav>
+    </div>
+
+    <main>
+      <section
+        id="home"
+        class="relative bg-cover bg-center h-screen flex items-center justify-center text-center p-4"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1546410531-bb448655e82a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        "
+      >
+        <div class="absolute inset-0 bg-darkblue bg-opacity-70"></div>
+        <div class="relative z-10 text-white max-w-5xl mx-auto">
+          <h2
+            class="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold mb-6 leading-tight animate-fade-in-down"
+          >
+            Empowering Minds for a Brighter Future
+          </h2>
+          <p
+            class="text-lg md:text-xl lg:text-2xl mb-10 opacity-90 animate-fade-in-up"
+          >
+            Discover a world of academic excellence, innovation, and community
+            at Unity University.
+          </p>
+          <div
+            class="space-y-4 md:space-y-0 md:space-x-6 flex flex-col md:flex-row justify-center animate-scale-in"
+          >
+            <a
+              href="#academics"
+              class="bg-secondary hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1"
+              >Explore Programs</a
+            >
+            <a
+              href="#admissions"
+              class="bg-transparent hover:bg-white text-white hover:text-primary border-2 border-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1"
+              >Admissions Guide</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="py-16 md:py-24 bg-lightgray">
+        <div class="container mx-auto px-4 md:px-8">
+          <h2
+            class="text-4xl font-heading font-bold text-primary text-center mb-12 relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-accent"
+          >
+            Welcome to Unity University
+          </h2>
+          <div class="flex flex-col lg:flex-row items-center lg:space-x-12">
+            <div class="lg:w-1/2 mb-8 lg:mb-0">
+              <img
+                src="https://images.unsplash.com/photo-1550993043-44b20a40f0c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Students collaborating"
+                class="rounded-lg shadow-xl border-4 border-white"
+              />
+            </div>
+            <div class="lg:w-1/2 text-lg leading-relaxed text-darkgray">
+              <h3 class="text-3xl font-heading font-bold text-darkblue mb-6">
+                Our Mission: Educating Global Citizens
+              </h3>
+              <p class="mb-4">
+                Unity University is a leading institution dedicated to fostering
+                academic excellence, critical thinking, and innovation. We
+                empower our students to become compassionate leaders and engaged
+                global citizens, ready to tackle the challenges of tomorrow.
+              </p>
+              <p class="mb-6">
+                With a rich history of groundbreaking research and a commitment
+                to diverse and inclusive learning environments, Unity University
+                offers a transformative educational experience. Our faculty are
+                world-renowned experts passionate about teaching and mentoring
+                the next generation of innovators.
+              </p>
+              <ul class="list-none space-y-3 text-darkgray">
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-secondary mr-3 text-xl"
+                  ></i>
+                  Innovative & Interdisciplinary Programs
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-secondary mr-3 text-xl"
+                  ></i>
+                  World-Class Faculty & Research Opportunities
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-secondary mr-3 text-xl"
+                  ></i>
+                  Vibrant Campus Life & Global Community
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-check-circle text-secondary mr-3 text-xl"
+                  ></i>
+                  Strong Alumni Network & Career Support
+                </li>
+              </ul>
+              <a
+                href="#"
+                class="mt-8 inline-block bg-primary hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-full shadow-md hover:shadow-lg transition duration-300"
+                >Discover Our Story</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="academics" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-8">
+          <h2
+            class="text-4xl font-heading font-bold text-primary text-center mb-12 relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-accent"
+          >
+            Our Academic Programs
+          </h2>
+          <p class="text-lg text-center max-w-3xl mx-auto mb-12 text-darkgray">
+            Unity University offers a wide array of undergraduate and graduate
+            programs across diverse fields, designed to meet the demands of a
+            rapidly evolving world.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div
+              class="bg-lightgray p-8 rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300"
+            >
+              <div class="text-center mb-6">
+                <i class="fas fa-microchip text-6xl text-primary mb-4"></i>
+                <h3 class="text-2xl font-heading font-semibold text-darkblue">
+                  Engineering & Technology
+                </h3>
+              </div>
+              <p class="text-darkgray leading-relaxed mb-6">
+                Cutting-edge programs in computer science, mechanical
+                engineering, electrical engineering, and more.
+              </p>
+              <a
+                href="#"
+                class="text-primary hover:text-secondary font-semibold flex items-center justify-center"
+                >View Programs <i class="fas fa-arrow-right ml-2 text-sm"></i
+              ></a>
+            </div>
+            <div
+              class="bg-lightgray p-8 rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300"
+            >
+              <div class="text-center mb-6">
+                <i class="fas fa-stethoscope text-6xl text-secondary mb-4"></i>
+                <h3 class="text-2xl font-heading font-semibold text-darkblue">
+                  Health & Medical Sciences
+                </h3>
+              </div>
+              <p class="text-darkgray leading-relaxed mb-6">
+                Prepare for a rewarding career in medicine, nursing, public
+                health, and biomedical research.
+              </p>
+              <a
+                href="#"
+                class="text-secondary hover:text-blue-600 font-semibold flex items-center justify-center"
+                >View Programs <i class="fas fa-arrow-right ml-2 text-sm"></i
+              ></a>
+            </div>
+            <div
+              class="bg-lightgray p-8 rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300"
+            >
+              <div class="text-center mb-6">
+                <i class="fas fa-chart-line text-6xl text-accent mb-4"></i>
+                <h3 class="text-2xl font-heading font-semibold text-darkblue">
+                  Business & Economics
+                </h3>
+              </div>
+              <p class="text-darkgray leading-relaxed mb-6">
+                Develop leadership skills and strategic thinking in finance,
+                marketing, management, and global economics.
+              </p>
+              <a
+                href="#"
+                class="text-accent hover:text-orange-600 font-semibold flex items-center justify-center"
+                >View Programs <i class="fas fa-arrow-right ml-2 text-sm"></i
+              ></a>
+            </div>
+            <div
+              class="bg-lightgray p-8 rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300"
+            >
+              <div class="text-center mb-6">
+                <i class="fas fa-book-open text-6xl text-primary mb-4"></i>
+                <h3 class="text-2xl font-heading font-semibold text-darkblue">
+                  Arts, Humanities & Social Sciences
+                </h3>
+              </div>
+              <p class="text-darkgray leading-relaxed mb-6">
+                Explore diverse perspectives and critical analysis in
+                literature, history, psychology, and political science.
+              </p>
+              <a
+                href="#"
+                class="text-primary hover:text-secondary font-semibold flex items-center justify-center"
+                >View Programs <i class="fas fa-arrow-right ml-2 text-sm"></i
+              ></a>
+            </div>
+            <div
+              class="bg-lightgray p-8 rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300"
+            >
+              <div class="text-center mb-6">
+                <i class="fas fa-flask text-6xl text-secondary mb-4"></i>
+                <h3 class="text-2xl font-heading font-semibold text-darkblue">
+                  Natural Sciences
+                </h3>
+              </div>
+              <p class="text-darkgray leading-relaxed mb-6">
+                Dive into biology, chemistry, physics, and environmental
+                sciences with hands-on research opportunities.
+              </p>
+              <a
+                href="#"
+                class="text-secondary hover:text-blue-600 font-semibold flex items-center justify-center"
+                >View Programs <i class="fas fa-arrow-right ml-2 text-sm"></i
+              ></a>
+            </div>
+            <div
+              class="bg-lightgray p-8 rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300"
+            >
+              <div class="text-center mb-6">
+                <i class="fas fa-gavel text-6xl text-accent mb-4"></i>
+                <h3 class="text-2xl font-heading font-semibold text-darkblue">
+                  Law & Public Policy
+                </h3>
+              </div>
+              <p class="text-darkgray leading-relaxed mb-6">
+                Shape the future with programs in legal studies, public
+                administration, and international relations.
+              </p>
+              <a
+                href="#"
+                class="text-accent hover:text-orange-600 font-semibold flex items-center justify-center"
+                >View Programs <i class="fas fa-arrow-right ml-2 text-sm"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="admissions" class="py-16 md:py-24 bg-primary text-white">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+          <h2 class="text-4xl font-heading font-bold text-white mb-6">
+            Your Journey Starts Here
+          </h2>
+          <p class="text-lg md:text-xl max-w-4xl mx-auto mb-10">
+            We seek curious, passionate, and driven individuals to join our
+            diverse community. Explore our admissions process and discover how
+            Unity University can be your launchpad to success.
+          </p>
+          <div
+            class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6"
+          >
+            <a
+              href="#"
+              class="bg-accent hover:bg-yellow-600 text-darkgray font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1"
+              >How to Apply</a
+            >
+            <a
+              href="#"
+              class="bg-transparent hover:bg-white text-white hover:text-primary border-2 border-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1"
+              >Visit Campus</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="campus-life" class="py-16 md:py-24 bg-lightgray">
+        <div class="container mx-auto px-4 md:px-8">
+          <h2
+            class="text-4xl font-heading font-bold text-primary text-center mb-12 relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-accent"
+          >
+            Experience Vibrant Campus Life
+          </h2>
+          <div class="flex flex-col lg:flex-row items-center lg:space-x-12">
+            <div
+              class="lg:w-1/2 text-lg leading-relaxed text-darkgray mb-8 lg:mb-0"
+            >
+              <h3 class="text-3xl font-heading font-bold text-darkblue mb-6">
+                Beyond the Classroom
+              </h3>
+              <p class="mb-4">
+                At Unity University, education extends far beyond lectures and
+                textbooks. Our dynamic campus life offers a wealth of
+                opportunities for personal growth, leadership development, and
+                unforgettable experiences.
+              </p>
+              <p class="mb-6">
+                Engage with over 200 student organizations, cheer on our
+                athletic teams, participate in community service, or simply
+                relax and connect with friends in our modern student facilities.
+                You'll find a supportive and inclusive community ready to
+                embrace you.
+              </p>
+              <ul class="list-none space-y-3 text-darkgray">
+                <li class="flex items-center">
+                  <i class="fas fa-users text-secondary mr-3 text-xl"></i>
+                  Diverse Student Organizations & Clubs
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-futbol text-secondary mr-3 text-xl"></i>
+                  Competitive Athletics & Intramural Sports
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-lightbulb text-secondary mr-3 text-xl"></i>
+                  Leadership Programs & Workshops
+                </li>
+                <li class="flex items-center">
+                  <i
+                    class="fas fa-hand-holding-heart text-secondary mr-3 text-xl"
+                  ></i>
+                  Community Service & Engagement
+                </li>
+              </ul>
+              <a
+                href="#"
+                class="mt-8 inline-block bg-secondary hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-md hover:shadow-lg transition duration-300"
+                >Explore Student Life</a
+              >
+            </div>
+            <div class="lg:w-1/2">
+              <img
+                src="https://images.unsplash.com/photo-1526466983057-04b3a4a0c872?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Students on campus green"
+                class="rounded-lg shadow-xl border-4 border-white"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="research" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-8">
+          <h2
+            class="text-4xl font-heading font-bold text-primary text-center mb-12 relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-accent"
+          >
+            Pioneering Research & Innovation
+          </h2>
+          <p class="text-lg text-center max-w-3xl mx-auto mb-12 text-darkgray">
+            Unity University is at the forefront of discovery, driving impactful
+            research that addresses global challenges and shapes the future.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div class="bg-lightgray p-8 rounded-lg shadow-md">
+              <img
+                src="https://images.unsplash.com/photo-1581092490710-bb97e5960813?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Researchers in lab"
+                class="rounded-lg shadow-md mb-6"
+              />
+              <h3
+                class="text-2xl font-heading font-semibold text-darkblue mb-4"
+              >
+                Breakthroughs in AI & Robotics
+              </h3>
+              <p class="text-darkgray leading-relaxed mb-4">
+                Our faculty and students are developing intelligent systems and
+                robotic solutions for healthcare, manufacturing, and
+                environmental monitoring.
+              </p>
+              <a
+                href="#"
+                class="text-primary hover:text-secondary font-semibold flex items-center"
+                >Read More <i class="fas fa-arrow-right ml-2 text-sm"></i
+              ></a>
+            </div>
+            <div class="bg-lightgray p-8 rounded-lg shadow-md">
+              <img
+                src="https://images.unsplash.com/photo-1528646199965-0efb8118e38f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fDB8fHwwfA%3D%3D"
+                alt="Sustainable energy research"
+                class="rounded-lg shadow-md mb-6"
+              />
+              <h3
+                class="text-2xl font-heading font-semibold text-darkblue mb-4"
+              >
+                Sustainable Energy Solutions
+              </h3>
+              <p class="text-darkgray leading-relaxed mb-4">
+                Researching renewable energy sources, efficient energy storage,
+                and sustainable practices for a greener planet.
+              </p>
+              <a
+                href="#"
+                class="text-primary hover:text-secondary font-semibold flex items-center"
+                >Read More <i class="fas fa-arrow-right ml-2 text-sm"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="py-16 md:py-24 bg-primary text-white">
+        <div class="container mx-auto px-4 md:px-8">
+          <h2
+            class="text-4xl font-heading font-bold text-white text-center mb-12 relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-accent"
+          >
+            Voices from Our Community
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div
+              class="bg-darkblue p-8 rounded-lg shadow-xl border border-secondary"
+            >
+              <img
+                src="https://randomuser.me/api/portraits/women/72.jpg"
+                alt="Student Sarah Chen"
+                class="w-20 h-20 rounded-full mx-auto mb-6 border-4 border-accent shadow-md"
+              />
+              <p class="text-lg italic text-gray-200 mb-6 leading-relaxed">
+                "Unity University has opened so many doors for me. The
+                professors are incredibly supportive, and the research
+                opportunities are unparalleled. I'm so glad I chose to study
+                here."
+              </p>
+              <p class="font-semibold text-white">
+                - Sarah Chen, Computer Science Student
+              </p>
+            </div>
+            <div
+              class="bg-darkblue p-8 rounded-lg shadow-xl border border-secondary"
+            >
+              <img
+                src="https://randomuser.me/api/portraits/men/44.jpg"
+                alt="Alumnus David Lee"
+                class="w-20 h-20 rounded-full mx-auto mb-6 border-4 border-accent shadow-md"
+              />
+              <p class="text-lg italic text-gray-200 mb-6 leading-relaxed">
+                "The comprehensive education and strong alumni network from
+                Unity University were instrumental in launching my career. The
+                skills I learned are still relevant today."
+              </p>
+              <p class="font-semibold text-white">
+                - David Lee, Alumnus (Class of '15), CEO at Tech Solutions
+              </p>
+            </div>
+            <div
+              class="bg-darkblue p-8 rounded-lg shadow-xl border border-secondary"
+            >
+              <img
+                src="https://randomuser.me/api/portraits/women/90.jpg"
+                alt="Professor Dr. Anya Sharma"
+                class="w-20 h-20 rounded-full mx-auto mb-6 border-4 border-accent shadow-md"
+              />
+              <p class="text-lg italic text-gray-200 mb-6 leading-relaxed">
+                "Teaching at Unity University is a privilege. Our students are
+                bright and motivated, and the university provides ample
+                resources for both teaching and groundbreaking research."
+              </p>
+              <p class="font-semibold text-white">
+                - Dr. Anya Sharma, Professor of Environmental Science
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="news-events" class="py-16 md:py-24 bg-lightgray">
+        <div class="container mx-auto px-4 md:px-8">
+          <h2
+            class="text-4xl font-heading font-bold text-primary text-center mb-12 relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-accent"
+          >
+            Latest News & Events
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1509062977755-f2d4715f20f6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Graduation ceremony"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <span class="text-sm font-semibold text-secondary mb-2 block"
+                  >NEWS | May 20, 2025</span
+                >
+                <h3
+                  class="text-xl font-heading font-semibold text-darkblue mb-3"
+                >
+                  Unity University Celebrates Class of 2025 at Grand
+                  Commencement Ceremony
+                </h3>
+                <p class="text-textlight text-base leading-relaxed mb-4">
+                  Graduates marked their achievements in a memorable ceremony
+                  attended by faculty, family, and distinguished guests.
+                </p>
+                <a
+                  href="#"
+                  class="text-primary hover:text-secondary font-semibold flex items-center"
+                  >Read More <i class="fas fa-arrow-right ml-2 text-sm"></i
+                ></a>
+              </div>
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1517435136894-3a9d592a5491?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Basketball game"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <span class="text-sm font-semibold text-secondary mb-2 block"
+                  >EVENT | June 10, 2025</span
+                >
+                <h3
+                  class="text-xl font-heading font-semibold text-darkblue mb-3"
+                >
+                  Annual Sports Festival Kicks Off Next Month!
+                </h3>
+                <p class="text-textlight text-base leading-relaxed mb-4">
+                  Get ready for a week of thrilling competitions, team spirit,
+                  and campus pride at our annual sports festival.
+                </p>
+                <a
+                  href="#"
+                  class="text-primary hover:text-secondary font-semibold flex items-center"
+                  >View Schedule <i class="fas fa-arrow-right ml-2 text-sm"></i
+                ></a>
+              </div>
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1550993043-44b20a40f0c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Research symposium"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <span class="text-sm font-semibold text-secondary mb-2 block"
+                  >NEWS | May 15, 2025</span
+                >
+                <h3
+                  class="text-xl font-heading font-semibold text-darkblue mb-3"
+                >
+                  Unity University Hosts International Research Symposium on AI
+                  Ethics
+                </h3>
+                <p class="text-textlight text-base leading-relaxed mb-4">
+                  Leading experts from around the globe convened to discuss the
+                  ethical implications of artificial intelligence.
+                </p>
+                <a
+                  href="#"
+                  class="text-primary hover:text-secondary font-semibold flex items-center"
+                  >Read More <i class="fas fa-arrow-right ml-2 text-sm"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-secondary py-16 text-white text-center">
+        <div class="container mx-auto px-4 md:px-8">
+          <h2 class="text-4xl font-heading font-bold mb-6">
+            Ready to Join Unity University?
+          </h2>
+          <p class="text-xl max-w-2xl mx-auto mb-8">
+            Take the next step in your academic journey. We're excited to
+            welcome you to our thriving community.
+          </p>
+          <a
+            href="#admissions"
+            class="bg-accent hover:bg-yellow-600 text-darkblue font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 text-lg"
+            >Start Your Application Today</a
+          >
+        </div>
+      </section>
+
+      <section id="contact" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-8">
+          <h2
+            class="text-4xl font-heading font-bold text-primary text-center mb-12 relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-accent"
+          >
+            Contact Us
+          </h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <div
+              class="bg-lightgray p-8 rounded-lg shadow-md text-lg leading-relaxed text-darkgray"
+            >
+              <h3 class="text-3xl font-heading font-bold text-darkblue mb-6">
+                Connect with Unity
+              </h3>
+              <p class="mb-4 flex items-start">
+                <i
+                  class="fas fa-map-marker-alt text-primary text-2xl mr-4 mt-1"
+                ></i>
+                456 University Avenue, Knowledge City, State 12345
+              </p>
+              <p class="mb-4 flex items-center">
+                <i class="fas fa-phone-alt text-primary text-2xl mr-4"></i>
+                <a href="tel:+1-555-987-6543" class="hover:underline"
+                  >+1 (555) 987-6543</a
+                >
+              </p>
+              <p class="mb-4 flex items-center">
+                <i class="fas fa-envelope text-primary text-2xl mr-4"></i>
+                <a href="mailto:info@unity.edu" class="hover:underline"
+                  >info@unity.edu</a
+                >
+              </p>
+              <p class="mb-6 flex items-center">
+                <i class="fas fa-clock text-primary text-2xl mr-4"></i> Office
+                Hours: Mon - Fri: 9:00 AM - 5:00 PM
+              </p>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15335.795856428775!2d-78.64293888775988!3d35.77209635032906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ac5f64d788888b%3A0xc07c390554f67c0!2sNorth%20Carolina%20State%20University!5e0!3m2!1sen!2ske!4v1716738367098!5m2!1sen!2ske"
+                width="100%"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="rounded-lg shadow-md mt-6"
+              ></iframe>
+            </div>
+
+            <div class="bg-lightgray p-8 rounded-lg shadow-md">
+              <h3 class="text-3xl font-heading font-bold text-darkblue mb-6">
+                Send Us an Inquiry
+              </h3>
+              <form action="#" method="POST" class="space-y-6">
+                <div>
+                  <label
+                    for="form-name"
+                    class="block text-darkgray text-lg font-medium mb-2"
+                    >Your Name</label
+                  >
+                  <input
+                    type="text"
+                    id="form-name"
+                    name="name"
+                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="form-email"
+                    class="block text-darkgray text-lg font-medium mb-2"
+                    >Your Email</label
+                  >
+                  <input
+                    type="email"
+                    id="form-email"
+                    name="email"
+                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="form-subject"
+                    class="block text-darkgray text-lg font-medium mb-2"
+                    >Subject</label
+                  >
+                  <input
+                    type="text"
+                    id="form-subject"
+                    name="subject"
+                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="form-message"
+                    class="block text-darkgray text-lg font-medium mb-2"
+                    >Your Message</label
+                  >
+                  <textarea
+                    id="form-message"
+                    name="message"
+                    rows="6"
+                    class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-y"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="bg-primary hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 w-full md:w-auto"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-darkblue text-gray-300 py-12">
+      <div
+        class="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
+      >
+        <div>
+          <h3 class="text-xl font-heading font-bold text-white mb-4">
+            Unity University
+          </h3>
+          <p class="text-sm leading-relaxed mb-4">
+            Empowering students through academic rigor, groundbreaking research,
+            and a vibrant community. Join us in shaping a brighter future.
+          </p>
+          <div class="flex space-x-4">
+            <a
+              href="#"
+              class="text-gray-300 hover:text-secondary transition duration-300"
+              ><i class="fab fa-facebook-f text-2xl"></i
+            ></a>
+            <a
+              href="#"
+              class="text-gray-300 hover:text-secondary transition duration-300"
+              ><i class="fab fa-twitter text-2xl"></i
+            ></a>
+            <a
+              href="#"
+              class="text-gray-300 hover:text-secondary transition duration-300"
+              ><i class="fab fa-instagram text-2xl"></i
+            ></a>
+            <a
+              href="#"
+              class="text-gray-300 hover:text-secondary transition duration-300"
+              ><i class="fab fa-linkedin-in text-2xl"></i
+            ></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-heading font-bold text-white mb-4">
+            Quick Links
+          </h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a
+                href="#home"
+                class="hover:text-secondary transition duration-300"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#academics"
+                class="hover:text-secondary transition duration-300"
+                >Academics</a
+              >
+            </li>
+            <li>
+              <a
+                href="#admissions"
+                class="hover:text-secondary transition duration-300"
+                >Admissions</a
+              >
+            </li>
+            <li>
+              <a
+                href="#campus-life"
+                class="hover:text-secondary transition duration-300"
+                >Campus Life</a
+              >
+            </li>
+            <li>
+              <a
+                href="#research"
+                class="hover:text-secondary transition duration-300"
+                >Research</a
+              >
+            </li>
+            <li>
+              <a
+                href="#news-events"
+                class="hover:text-secondary transition duration-300"
+                >News & Events</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-heading font-bold text-white mb-4">
+            Popular Programs
+          </h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="#" class="hover:text-secondary transition duration-300"
+                >Computer Science</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-secondary transition duration-300"
+                >Business Administration</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-secondary transition duration-300"
+                >Mechanical Engineering</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-secondary transition duration-300"
+                >Nursing</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-secondary transition duration-300"
+                >Environmental Science</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-heading font-bold text-white mb-4">
+            Contact Info
+          </h3>
+          <p class="mb-2 text-sm flex items-center">
+            <i class="fas fa-map-marker-alt text-secondary mr-3"></i> 456
+            University Ave, Knowledge City
+          </p>
+          <p class="mb-2 text-sm flex items-center">
+            <i class="fas fa-phone-alt text-secondary mr-3"></i> +1 (555)
+            987-6543
+          </p>
+          <p class="mb-2 text-sm flex items-center">
+            <i class="fas fa-envelope text-secondary mr-3"></i>
+            admissions@unity.edu
+          </p>
+          <p class="text-sm flex items-center">
+            <i class="fas fa-fax text-secondary mr-3"></i> +1 (555) 987-6544
+          </p>
+        </div>
+      </div>
+      <div
+        class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm"
+      >
+        <p>
+          &copy; <span id="current-year"></span> Unity University. All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Set current year in footer
+      document.getElementById('current-year').textContent =
+        new Date().getFullYear()
+
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menu-toggle')
+      const mobileMenu = document.getElementById('mobile-menu')
+      const closeMenu = document.getElementById('close-menu')
+      const mobileNavLinks = document.querySelectorAll(
+        '#mobile-menu [data-close-menu]'
+      )
+
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden')
+        mobileMenu.classList.add('translate-x-0')
+        document.body.classList.add('overflow-hidden-when-nav-active') // Custom class for no-scroll
+      })
+
+      const hideMobileMenu = () => {
+        mobileMenu.classList.remove('translate-x-0') // Start moving out
+        mobileMenu.classList.add('translate-x-full') // Ensure it moves fully out
+        // Use a timeout to hide it completely after the transition
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden')
+          document.body.classList.remove('overflow-hidden-when-nav-active')
+        }, 300) // Should match the transition duration
+      }
+
+      closeMenu.addEventListener('click', hideMobileMenu)
+
+      mobileNavLinks.forEach((link) => {
+        link.addEventListener('click', hideMobileMenu)
+      })
+    </script>
+  </body>
+</html>

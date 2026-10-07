@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sweet Delights Bakery - Freshly Baked with Love</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Custom styles to integrate Google Fonts with Tailwind */
+      body {
+        font-family: 'Josefin Sans', sans-serif;
+        @apply text-gray-800; /* Apply default text color from Tailwind */
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'Pacifico', cursive; /* Apply for headings */
+      }
+      .logo-font {
+        font-family: 'Pacifico', cursive;
+      }
+
+      /* Specific hero background */
+      .hero-bg {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url('https://images.unsplash.com/photo-1583339739775-52316e257002?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB4MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Placeholder image of pastries */
+        background-size: cover;
+        background-position: center;
+      }
+      /* Specific CTA background */
+      .cta-bg {
+        background-image: linear-gradient(
+            rgba(101, 71, 57, 0.8),
+            rgba(101, 71, 57, 0.8)
+          ),
+          url('https://images.unsplash.com/photo-1541334860472-747209772a50?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB4MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Placeholder image of coffee/bakery interior */
+        background-size: cover;
+        background-position: center;
+      }
+      /* Active nav link for scrollspy (manual JS) */
+      .nav-link.active {
+        @apply text-rose-600; /* Tailwind's rose-600 */
+        border-bottom: 2px solid theme('colors.rose.600');
+        font-weight: 600;
+      }
+
+      /* Custom animations (from script.js) */
+      .animate-fade-in,
+      .animate-fade-in-up,
+      .animate-fade-in-down,
+      .animate-fade-in-left,
+      .animate-fade-in-right {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .animate-fade-in {
+        transform: translateY(0);
+      }
+      .animate-fade-in-down {
+        transform: translateY(-20px);
+      }
+      .animate-fade-in-left {
+        transform: translateX(-20px);
+      }
+      .animate-fade-in-right {
+        transform: translateX(20px);
+      }
+
+      .animate-fade-in.is-visible,
+      .animate-fade-in-up.is-visible,
+      .animate-fade-in-down.is-visible,
+      .animate-fade-in-left.is-visible,
+      .animate-fade-in-right.is-visible {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+      }
+
+      .animate-delay-1s.is-visible {
+        transition-delay: 0.3s;
+      }
+      .animate-delay-2s.is-visible {
+        transition-delay: 0.6s;
+      }
+      .animate-delay-3s.is-visible {
+        transition-delay: 0.9s;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <header class="bg-white shadow-sm fixed top-0 w-full z-50">
+      <nav
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-3xl font-bold text-amber-800 logo-font"
+          >Sweet Delights</a
+        >
+        <div class="hidden md:flex space-x-6">
+          <a
+            href="#hero"
+            class="nav-link text-gray-600 hover:text-rose-600 transition duration-300"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="nav-link text-gray-600 hover:text-rose-600 transition duration-300"
+            >About Us</a
+          >
+          <a
+            href="#menu"
+            class="nav-link text-gray-600 hover:text-rose-600 transition duration-300"
+            >Menu</a
+          >
+          <a
+            href="#custom-orders"
+            class="nav-link text-gray-600 hover:text-rose-600 transition duration-300"
+            >Custom Orders</a
+          >
+          <a
+            href="#location"
+            class="nav-link text-gray-600 hover:text-rose-600 transition duration-300"
+            >Location</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-gray-600 hover:text-rose-600 transition duration-300"
+            >Contact</a
+          >
+        </div>
+        <a
+          href="#menu"
+          class="hidden md:block bg-rose-600 hover:bg-rose-700 text-white px-5 py-2 rounded-full transition duration-300"
+          >Order Now</a
+        >
+
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-gray-600 focus:outline-none"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md pb-4">
+        <a href="#hero" class="block py-2 px-4 text-gray-700 hover:bg-gray-100"
+          >Home</a
+        >
+        <a href="#about" class="block py-2 px-4 text-gray-700 hover:bg-gray-100"
+          >About Us</a
+        >
+        <a href="#menu" class="block py-2 px-4 text-gray-700 hover:bg-gray-100"
+          >Menu</a
+        >
+        <a
+          href="#custom-orders"
+          class="block py-2 px-4 text-gray-700 hover:bg-gray-100"
+          >Custom Orders</a
+        >
+        <a
+          href="#location"
+          class="block py-2 px-4 text-gray-700 hover:bg-gray-100"
+          >Location</a
+        >
+        <a
+          href="#contact"
+          class="block py-2 px-4 text-gray-700 hover:bg-gray-100"
+          >Contact</a
+        >
+        <a
+          href="#menu"
+          class="block bg-rose-600 text-white text-center py-2 mx-4 rounded-full mt-2 hover:bg-rose-700"
+          >Order Now</a
+        >
+      </div>
+    </header>
+
+    <main class="pt-20">
+      <section
+        id="hero"
+        class="hero-bg h-screen flex items-center justify-center text-white text-center px-4"
+      >
+        <div class="max-w-3xl">
+          <h1
+            class="text-5xl md:text-7xl font-bold mb-4 logo-font animate-fade-in-up"
+          >
+            Taste the Warmth, Feel the Love.
+          </h1>
+          <p
+            class="text-xl md:text-2xl mb-8 animate-fade-in-up animate-delay-1s"
+          >
+            Freshly baked breads, pastries, and treats, crafted with passion
+            every day.
+          </p>
+          <div class="space-x-4">
+            <a
+              href="#menu"
+              class="bg-rose-600 hover:bg-rose-700 text-white text-lg px-8 py-3 rounded-full inline-block transition duration-300 animate-fade-in-up animate-delay-2s"
+              >View Our Menu</a
+            >
+            <a
+              href="#location"
+              class="border-2 border-white hover:bg-white hover:text-rose-800 text-white text-lg px-8 py-3 rounded-full inline-block transition duration-300 animate-fade-in-up animate-delay-2s"
+              >Find Us</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="py-16 bg-gradient-to-br from-red-50 to-white">
+        <div
+          class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-10"
+        >
+          <div class="md:w-1/2 animate-fade-in-left">
+            <img
+              src="https://images.unsplash.com/photo-1558961361-9c3683f12ad4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB4MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Our bakery interior"
+              class="rounded-lg shadow-xl object-cover w-full h-80"
+            />
+          </div>
+          <div class="md:w-1/2 animate-fade-in-right">
+            <h2 class="text-4xl font-bold text-amber-800 mb-6 logo-font">
+              Our Story
+            </h2>
+            <p class="text-lg leading-relaxed mb-4 text-gray-700">
+              Sweet Delights Bakery began with a simple dream: to share the joy
+              of authentic, homemade baked goods with our community. For over 10
+              years, we've used traditional recipes and the freshest local
+              ingredients to create delightful breads, pastries, and cakes.
+            </p>
+            <p class="text-gray-600">
+              We believe that every bite should be an experience – a moment of
+              warmth, comfort, and pure indulgence. Come and taste the
+              difference that passion, quality, and a sprinkle of love make.
+            </p>
+            <a
+              href="#contact"
+              class="mt-6 inline-block bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 rounded-full transition duration-300"
+              >Connect With Us</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+          <h2
+            class="text-4xl font-bold text-amber-800 mb-12 logo-font animate-fade-in-down"
+          >
+            Our Delicious Menu
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in-up"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1509440159596-02493c322514?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB4MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Artisan Breads"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                  Artisan Breads
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Sourdough, ciabatta, rye, and more. Baked fresh daily with
+                  natural starters.
+                </p>
+                <a
+                  href="#"
+                  class="bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 rounded-full inline-block transition duration-300"
+                  >View Bread Selection</a
+                >
+              </div>
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in-up animate-delay-1s"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1534063806144-d890636fb486?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB4MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Fresh Pastries"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                  Flaky Pastries
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Croissants, Danishes, muffins, and cookies. Perfect for
+                  breakfast or a snack.
+                </p>
+                <a
+                  href="#"
+                  class="bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 rounded-full inline-block transition duration-300"
+                  >Explore Pastries</a
+                >
+              </div>
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden animate-fade-in-up animate-delay-2s"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1560946221-d70c4068565a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB4MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Celebration Cakes"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                  Celebration Cakes
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Custom cakes for birthdays, weddings, and special events. Made
+                  to order!
+                </p>
+                <a
+                  href="#custom-orders"
+                  class="bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 rounded-full inline-block transition duration-300"
+                  >Order Custom Cake</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="custom-orders"
+        class="py-16 bg-gradient-to-br from-white to-red-50"
+      >
+        <div class="container mx-auto px-4 text-center">
+          <h2
+            class="text-4xl font-bold text-amber-800 mb-12 logo-font animate-fade-in-down"
+          >
+            Custom Orders & Catering
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div class="animate-fade-in-left">
+              <img
+                src="https://images.unsplash.com/photo-1549593165-f481c7f766e4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB4MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Catering display"
+                class="rounded-lg shadow-xl object-cover w-full h-80"
+              />
+            </div>
+            <div class="text-left animate-fade-in-right">
+              <h3 class="text-3xl font-bold text-gray-800 mb-4 logo-font">
+                Make Your Event Sweet!
+              </h3>
+              <p class="text-lg leading-relaxed mb-4 text-gray-700">
+                Planning a party, corporate event, or a special celebration? Let
+                Sweet Delights Bakery take care of your dessert needs. We offer
+                custom cakes, bulk pastry orders, and catering services tailored
+                to your occasion.
+              </p>
+              <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
+                <li>Personalized cake designs</li>
+                <li>Assorted pastry platters</li>
+                <li>Fresh bread delivery for restaurants</li>
+                <li>Event catering consultations</li>
+              </ul>
+              <a
+                href="#contact"
+                class="inline-block bg-amber-800 hover:bg-amber-900 text-white px-6 py-3 rounded-full transition duration-300"
+                >Request a Quote</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+          <h2
+            class="text-4xl font-bold text-amber-800 mb-12 logo-font animate-fade-in-down"
+          >
+            What Our Customers Say
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div
+              class="bg-gray-50 p-8 rounded-lg shadow-lg border-l-4 border-rose-600 animate-fade-in-left"
+            >
+              <p class="text-lg italic text-gray-700 mb-4">
+                "The sourdough bread from Sweet Delights is simply the best I've
+                ever tasted! It's our family's weekly ritual now."
+              </p>
+              <p class="font-semibold text-gray-900">
+                - Jane D., Regular Customer
+              </p>
+            </div>
+            <div
+              class="bg-gray-50 p-8 rounded-lg shadow-lg border-l-4 border-rose-600 animate-fade-in-right"
+            >
+              <p class="text-lg italic text-gray-700 mb-4">
+                "Their custom birthday cake was a masterpiece, both beautiful
+                and incredibly delicious. Sweet Delights made our party
+                unforgettable!"
+              </p>
+              <p class="font-semibold text-gray-900">- Mark S., Happy Client</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="location"
+        class="py-16 bg-gradient-to-br from-red-50 to-white"
+      >
+        <div class="container mx-auto px-4 text-center">
+          <h2
+            class="text-4xl font-bold text-amber-800 mb-12 logo-font animate-fade-in-down"
+          >
+            Visit Our Bakery
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div class="text-left animate-fade-in-left">
+              <h3 class="text-3xl font-bold text-gray-800 mb-4 logo-font">
+                Find Us & Our Hours
+              </h3>
+              <div class="space-y-4 text-gray-700 mb-6">
+                <p class="flex items-center">
+                  <svg
+                    class="w-6 h-6 mr-3 text-rose-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  456 Baker's Lane, Downtown, Nairobi, Kenya
+                </p>
+                <p class="flex items-center">
+                  <svg
+                    class="w-6 h-6 mr-3 text-rose-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                    ></path>
+                  </svg>
+                  <a href="tel:+254789012345" class="hover:underline"
+                    >+254 789 012 345</a
+                  >
+                </p>
+                <p class="flex items-center">
+                  <svg
+                    class="w-6 h-6 mr-3 text-rose-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414L11 9.586V6z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  Mon - Fri: 7:00 AM - 6:00 PM <br />
+                  Sat: 8:00 AM - 5:00 PM <br />
+                  Sun: Closed
+                </p>
+              </div>
+            </div>
+            <div
+              class="map-placeholder rounded-lg overflow-hidden shadow-xl animate-fade-in-right"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.2505670868477!2d144.9631627153186!3d-37.81627997975191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642b5883d47cd%3A0x6b4f738f7a637d9!2sFlinders%20Street%20Station!5e0!3m2!1sen!2sau!4v1678888888888!5m2!1sen!2sau"
+                width="100%"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-bg py-20 text-white text-center px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2
+            class="text-4xl md:text-5xl font-bold mb-6 logo-font animate-fade-in-up"
+          >
+            Order Your Favorites Today!
+          </h2>
+          <p
+            class="text-lg md:text-xl mb-8 animate-fade-in-up animate-delay-1s"
+          >
+            Pre-order for pickup, inquire about catering, or simply stop by for
+            a fresh treat.
+          </p>
+          <a
+            href="#contact"
+            class="bg-white hover:bg-gray-100 text-rose-800 text-lg px-8 py-4 rounded-full inline-block transition duration-300 animate-fade-in-up animate-delay-2s"
+            >Contact Us Now</a
+          >
+        </div>
+      </section>
+
+      <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <h2
+            class="text-4xl font-bold text-center text-amber-800 mb-12 logo-font animate-fade-in-down"
+          >
+            Send Us a Message
+          </h2>
+          <div
+            class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg animate-fade-in"
+          >
+            <form id="contact-form">
+              <div class="mb-4">
+                <label
+                  for="name"
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-rose-500"
+                  placeholder="Your Name"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  for="email"
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-rose-500"
+                  placeholder="your@example.com"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  for="subject"
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-rose-500"
+                  placeholder="Custom Order Inquiry / Feedback"
+                />
+              </div>
+              <div class="mb-6">
+                <label
+                  for="message"
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-rose-500"
+                  placeholder="Tell us about your needs..."
+                  required
+                ></textarea>
+              </div>
+              <div class="flex justify-end">
+                <button
+                  type="submit"
+                  class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300 py-10">
+      <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h5 class="text-xl font-bold text-white mb-4 logo-font">
+            Sweet Delights
+          </h5>
+          <p class="text-sm">
+            Bringing warmth and sweetness to your table with freshly baked
+            goods, made with love.
+          </p>
+        </div>
+        <div>
+          <h5 class="text-xl font-bold text-white mb-4">Quick Links</h5>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a
+                href="#about"
+                class="hover:text-rose-500 transition duration-300"
+                >Our Story</a
+              >
+            </li>
+            <li>
+              <a
+                href="#menu"
+                class="hover:text-rose-500 transition duration-300"
+                >Full Menu</a
+              >
+            </li>
+            <li>
+              <a
+                href="#custom-orders"
+                class="hover:text-rose-500 transition duration-300"
+                >Catering</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-rose-500 transition duration-300"
+                >Privacy Policy</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xl font-bold text-white mb-4">Connect With Us</h5>
+          <div class="flex space-x-4 mb-4">
+            <a
+              href="#"
+              class="text-gray-300 hover:text-white transition duration-300"
+              ><svg
+                class="w-7 h-7"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.776-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22H12c5.523 0 10-4.477 10-10z"
+                  clip-rule="evenodd"
+                ></path></svg
+            ></a>
+            <a
+              href="#"
+              class="text-gray-300 hover:text-white transition duration-300"
+              ><svg
+                class="w-7 h-7"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M8.29 20.251c1.802 0 3.197-.847 4.148-1.57.95-.724 1.76-1.787 2.43-3.192 1.393-2.88 2.25-5.91 2.25-9.014C17.118 3.518 14.184.593 11.233.593c-2.951 0-5.885 2.925-5.885 5.864 0 2.938 2.934 5.863 5.885 5.863 1.956 0 3.32-.823 4.148-1.57.95-.725 1.76-1.788 2.43-3.193C15.82 4.417 14.963 1.38 11.233 1.38c-2.951 0-5.885 2.924-5.885 5.863 0 2.938 2.934 5.863 5.885 5.863zm0 0"
+                ></path></svg
+            ></a>
+            <a
+              href="#"
+              class="text-gray-300 hover:text-white transition duration-300"
+              ><svg
+                class="w-7 h-7"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.477 2 12c0 4.286 2.87 7.94 6.84 9.176l.79-.894c-.45-.487-.714-1.077-.714-1.732 0-1.42.92-2.613 2.203-3.053l1.198-.413-.01-.004c.148-.052.28-.093.41-.127l.183-.05.183-.05c.13-.034.26-.07.39-.092.12-.02.24-.034.36-.04.11-.006.22-.007.33-.007.11 0 .22.001.33.007.12.006.24.02.36.04.13.022.26.058.39.092l.183.05.183.05c.13.034.26.075.41.127l-.01.004 1.198.413C20.18 14.474 22 17.006 22 19.992V20c0 1.104-.896 2-2 2h-1c-.552 0-1-.448-1-1v-1c0-2.206-1.794-4-4-4s-4 1.794-4 4v1c0 .552-.448 1-1 1H4c-1.104 0-2-.896-2-2V12zm5 0a1 1 0 100 2 1 1 0 000-2z"
+                  clip-rule="evenodd"
+                ></path></svg
+            ></a>
+          </div>
+          <p class="text-sm">
+            © <span id="current-year"></span> Sweet Delights Bakery. All rights
+            reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

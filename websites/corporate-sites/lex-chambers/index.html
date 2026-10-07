@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lex Chambers - Your Trusted Legal Partner</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        color: #343a40; /* Dark grey text */
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'Playfair Display', serif;
+        color: #212529; /* Even darker for headings */
+      }
+      .bg-primary-custom {
+        background-color: #004d40 !important; /* Dark Teal - A common professional law firm color */
+      }
+      .btn-primary-custom {
+        background-color: #004d40;
+        border-color: #004d40;
+        color: #fff;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+      }
+      .btn-primary-custom:hover {
+        background-color: #00796b; /* Lighter teal on hover */
+        border-color: #00796b;
+      }
+      .text-primary-custom {
+        color: #004d40 !important;
+      }
+      .section-padding {
+        padding: 80px 0; /* Consistent padding for sections */
+      }
+      .hero-section {
+        background: url('https://images.unsplash.com/photo-1507679799974-c6c747192a6c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+          no-repeat center center/cover;
+        color: #fff;
+        padding: 120px 0;
+        position: relative;
+      }
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* Overlay */
+      }
+      .hero-section .container {
+        position: relative;
+        z-index: 1;
+      }
+      .practice-area-card {
+        border: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+      }
+      .practice-area-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+      .team-member-card img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #004d40;
+        margin-bottom: 1rem;
+      }
+      .team-member-card {
+        text-align: center;
+        padding: 1.5rem;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .team-member-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .testimonial-card {
+        background-color: #fff;
+        border-left: 5px solid #004d40;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1.5rem;
+      }
+      .contact-info p i {
+        margin-right: 10px;
+        color: #004d40;
+      }
+      .social-icons a {
+        color: #fff;
+        font-size: 1.5rem;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+      }
+      .social-icons a:hover {
+        color: #adb5bd; /* Lighter grey on hover */
+      }
+      /* Custom styles for Bootstrap form focus states */
+      .form-control:focus {
+        border-color: #00796b;
+        box-shadow: 0 0 0 0.25rem rgba(0, 121, 107, 0.25);
+      }
+      /* Placeholder for Font Awesome icons if you decide to use them */
+      .fas {
+        /* Base style for Font Awesome Solid icons */
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-primary-custom py-3 sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand fs-4 fw-bold" href="#">Lex Chambers</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#hero"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#practice-areas">Practice Areas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#team">Our Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section
+        id="hero"
+        class="hero-section text-center d-flex align-items-center"
+      >
+        <div class="container">
+          <h1 class="display-3 fw-bold mb-4">
+            Expert Legal Solutions, Trusted Guidance
+          </h1>
+          <p class="lead mb-5">
+            Providing comprehensive legal services with integrity and dedication
+            across Kenya.
+          </p>
+          <a href="#contact" class="btn btn-lg btn-primary-custom"
+            >Schedule a Consultation</a
+          >
+        </div>
+      </section>
+
+      <section id="practice-areas" class="section-padding bg-light">
+        <div class="container text-center">
+          <h2 class="display-5 mb-5 text-primary-custom">Our Practice Areas</h2>
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="card practice-area-card p-4">
+                <img
+                  src="https://via.placeholder.com/80x80?text=Corporate"
+                  class="img-fluid rounded-circle mx-auto mb-3"
+                  alt="Corporate Law Icon"
+                />
+                <div class="card-body">
+                  <h3 class="card-title h5 mb-3">Corporate Law</h3>
+                  <p class="card-text">
+                    Assisting businesses with formation, contracts, mergers, and
+                    regulatory compliance.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card practice-area-card p-4">
+                <img
+                  src="https://via.placeholder.com/80x80?text=Property"
+                  class="img-fluid rounded-circle mx-auto mb-3"
+                  alt="Property Law Icon"
+                />
+                <div class="card-body">
+                  <h3 class="card-title h5 mb-3">
+                    Property Law & Conveyancing
+                  </h3>
+                  <p class="card-text">
+                    Expert guidance on real estate transactions, leases, and
+                    property disputes.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card practice-area-card p-4">
+                <img
+                  src="https://via.placeholder.com/80x80?text=Family"
+                  class="img-fluid rounded-circle mx-auto mb-3"
+                  alt="Family Law Icon"
+                />
+                <div class="card-body">
+                  <h3 class="card-title h5 mb-3">Family Law</h3>
+                  <p class="card-text">
+                    Sensitive and professional representation in matters of
+                    divorce, child custody, and succession.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card practice-area-card p-4">
+                <img
+                  src="https://via.placeholder.com/80x80?text=Litigation"
+                  class="img-fluid rounded-circle mx-auto mb-3"
+                  alt="Litigation Icon"
+                />
+                <div class="card-body">
+                  <h3 class="card-title h5 mb-3">
+                    Litigation & Dispute Resolution
+                  </h3>
+                  <p class="card-text">
+                    Vigorous representation in court and effective alternative
+                    dispute resolution.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card practice-area-card p-4">
+                <img
+                  src="https://via.placeholder.com/80x80?text=IP"
+                  class="img-fluid rounded-circle mx-auto mb-3"
+                  alt="Intellectual Property Icon"
+                />
+                <div class="card-body">
+                  <h3 class="card-title h5 mb-3">Intellectual Property</h3>
+                  <p class="card-text">
+                    Protecting your innovations, trademarks, and copyrights.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="card practice-area-card p-4">
+                <img
+                  src="https://via.placeholder.com/80x80?text=Employment"
+                  class="img-fluid rounded-circle mx-auto mb-3"
+                  alt="Employment Law Icon"
+                />
+                <div class="card-body">
+                  <h3 class="card-title h5 mb-3">Employment Law</h3>
+                  <p class="card-text">
+                    Advising on employment contracts, disputes, and compliance.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section-padding">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+              <img
+                src="https://images.unsplash.com/photo-1521737711867-e3b9751092c9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="img-fluid rounded shadow-lg"
+                alt="Law Firm Office"
+              />
+            </div>
+            <div class="col-lg-6">
+              <h2 class="display-5 mb-4 text-primary-custom">
+                About Lex Chambers
+              </h2>
+              <p class="lead">
+                Established in 2005, Lex Chambers has grown to become one of
+                Kenya's most respected legal practices, known for its unwavering
+                commitment to client success and ethical representation.
+              </p>
+              <p>
+                Our firm brings together a diverse team of highly skilled
+                advocates with deep expertise across various sectors. We pride
+                ourselves on providing personalized, effective, and timely legal
+                solutions, ensuring that each client receives the attention and
+                strategic advice they deserve.
+              </p>
+              <p>
+                At Lex Chambers, we believe in fostering long-term relationships
+                built on trust, transparency, and results. Your legal challenges
+                are our priority.
+              </p>
+              <a href="#contact" class="btn btn-primary-custom mt-3"
+                >Learn More & Contact</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" class="section-padding bg-light">
+        <div class="container text-center">
+          <h2 class="display-5 mb-5 text-primary-custom">
+            Meet Our Dedicated Team
+          </h2>
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="team-member-card">
+                <img
+                  src="https://via.placeholder.com/150x150?text=Advocate+1"
+                  alt="Advocate Jane Doe"
+                  class="img-fluid"
+                />
+                <h3 class="h5 mt-3 mb-1">Adv. Jane Doe</h3>
+                <p class="text-muted mb-2">Senior Partner, Corporate Law</p>
+                <p class="small text-secondary">
+                  With over 20 years of experience, Jane leads our corporate
+                  legal team, specializing in M&A and regulatory compliance.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="team-member-card">
+                <img
+                  src="https://via.placeholder.com/150x150?text=Advocate+2"
+                  alt="Advocate John Smith"
+                  class="img-fluid"
+                />
+                <h3 class="h5 mt-3 mb-1">Adv. John Smith</h3>
+                <p class="text-muted mb-2">Partner, Litigation</p>
+                <p class="small text-secondary">
+                  John is a formidable litigator, representing clients in
+                  complex civil and commercial disputes.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="team-member-card">
+                <img
+                  src="https://via.placeholder.com/150x150?text=Advocate+3"
+                  alt="Advocate Emily White"
+                  class="img-fluid"
+                />
+                <h3 class="h5 mt-3 mb-1">Adv. Emily White</h3>
+                <p class="text-muted mb-2">Associate, Family Law</p>
+                <p class="small text-secondary">
+                  Emily provides compassionate and effective representation in
+                  all family law matters.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="section-padding bg-white">
+        <div class="container text-center">
+          <h2 class="display-5 mb-5 text-primary-custom">
+            What Our Clients Say
+          </h2>
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div
+                id="testimonialCarousel"
+                class="carousel slide"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="testimonial-card">
+                      <p class="lead fst-italic">
+                        "Lex Chambers handled our complex property case with
+                        utmost professionalism and achieved an excellent
+                        outcome. Highly recommended!"
+                      </p>
+                      <p class="text-end fw-bold mb-0">- Client from Nairobi</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="testimonial-card">
+                      <p class="lead fst-italic">
+                        "Their corporate legal advice was invaluable. They
+                        guided us through a difficult merger smoothly."
+                      </p>
+                      <p class="text-end fw-bold mb-0">- CEO, Tech Startup</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="testimonial-card">
+                      <p class="lead fst-italic">
+                        "The team at Lex Chambers provided incredible support
+                        during a challenging family matter. Their compassion and
+                        expertise were truly appreciated."
+                      </p>
+                      <p class="text-end fw-bold mb-0">- Individual Client</p>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#testimonialCarousel"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#testimonialCarousel"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section-padding bg-light">
+        <div class="container">
+          <h2 class="display-5 mb-5 text-center text-primary-custom">
+            Contact Us
+          </h2>
+          <div class="row g-5">
+            <div class="col-lg-6">
+              <h3 class="h4 mb-4">Send us a Message</h3>
+              <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Your Name"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="name@example.com"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="subject" class="form-label">Subject</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="subject"
+                    placeholder="Legal Inquiry"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    rows="5"
+                    placeholder="Tell us about your legal needs..."
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary-custom">
+                  Submit Inquiry
+                </button>
+              </form>
+            </div>
+            <div class="col-lg-6">
+              <h3 class="h4 mb-4">Our Office</h3>
+              <div class="contact-info mb-4">
+                <p class="mb-2">
+                  <i class="fas fa-map-marker-alt"></i> Karen, Nairobi, Kenya
+                </p>
+                <p class="mb-2">
+                  <i class="fas fa-phone"></i> +254 7XX XXX XXX
+                </p>
+                <p class="mb-2">
+                  <i class="fas fa-envelope"></i> info@lexchambers.co.ke
+                </p>
+                <p class="mb-2">
+                  <i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 5:00 PM
+                </p>
+              </div>
+              <h3 class="h4 mb-3">Find Us on Map</h3>
+              <div class="ratio ratio-16x9 shadow-sm">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.170457632616!2d36.70889267498705!3d-1.3090885986877843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1b40285a2f5f%3A0xc3b8a3e7e45300f8!2sKaren%20Square!5e0!3m2!1sen!2ske!4v1716757650383!5m2!1sen!2ske"
+                  width="600"
+                  height="450"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-primary-custom text-white py-5">
+      <div class="container text-center">
+        <div class="row align-items-center mb-3">
+          <div class="col-md-4 text-md-start mb-2 mb-md-0">
+            <a href="#" class="navbar-brand text-white fs-4 fw-bold"
+              >Lex Chambers</a
+            >
+          </div>
+          <div class="col-md-4 mb-2 mb-md-0">
+            <div class="social-icons">
+              <a href="#" class="text-white me-2"
+                ><i class="fab fa-facebook-f"></i>FB</a
+              >
+              <a href="#" class="text-white me-2"
+                ><i class="fab fa-twitter"></i>TW</a
+              >
+              <a href="#" class="text-white me-2"
+                ><i class="fab fa-linkedin-in"></i>LI</a
+              >
+            </div>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <ul
+              class="list-unstyled d-flex justify-content-center justify-content-md-end mb-0"
+            >
+              <li class="ms-3">
+                <a class="text-white-50 text-decoration-none" href="#"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li class="ms-3">
+                <a class="text-white-50 text-decoration-none" href="#"
+                  >Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="mb-0 text-white-50">
+          &copy; 2025 Lex Chambers. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/your-font-awesome-kit-id.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault()
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth',
+          })
+
+          // Close collapsed navbar on link click for small screens
+          const navbarCollapse = document.getElementById('navbarNav')
+          if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+              toggle: false,
+            })
+            bsCollapse.hide()
+          }
+        })
+      })
+      // Optional: Add simple form submission handler (for demonstration)
+      document
+        .querySelector('.contact-form')
+        .addEventListener('submit', function (e) {
+          e.preventDefault()
+          alert(
+            "Form submitted! (This is a placeholder. In a real project, you'd handle server-side submission.)"
+          )
+          this.reset() // Clear the form
+        })
+    </script>
+  </body>
+</html>
