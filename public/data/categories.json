@@ -5,23 +5,8 @@
     "path": "websites/corporate-sites"
   },
   {
-    "key": "frontend-lab",
-    "label": "Frontend Lab",
-    "path": "websites/frontend-lab"
-  },
-  {
     "key": "landing-pages",
     "label": "Landing Pages",
     "path": "websites/landing-pages"
-  },
-  {
-    "key": "mini-apps",
-    "label": "Mini Apps",
-    "path": "websites/mini-apps"
-  },
-  {
-    "key": "ui-components",
-    "label": "Ui Components",
-    "path": "websites/ui-components"
   }
 ]

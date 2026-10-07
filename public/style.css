@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@tailwind utilities;
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -239,3 +240,8 @@ textarea {
   give the .glass background a lower z-index (e.g., z-0) and the specific 
   button/link a higher z-index (e.g., relative z-10) individually in your HTML/Tailwind.
 */
+
+html.dark #theme-toggle .icon-sun { display: none !important; }
+html.dark #theme-toggle .icon-moon { display: block !important; }
+html:not(.dark) #theme-toggle .icon-sun { display: block !important; }
+html:not(.dark) #theme-toggle .icon-moon { display: none !important; }

@@ -43,7 +43,7 @@ async function loadData() {
       renderProjects(state.projects);
       initializeFilters();
       initializeViewToggle();
-      initializeScrollSpy(); // New: For one-page active link highlighting
+      initializeScrollSpy();
     }
   } catch (error) {
     console.error('Error loading portfolio data:', error);
@@ -56,7 +56,6 @@ function showErrorState() {
   if (grid) {
     grid.innerHTML = `
       <div class="col-span-full text-center py-16">
-        <div class="text-6xl mb-4" aria-hidden="true">⚠️</div>
         <p class="text-xl text-red-500 mb-2 font-semibold">Failed to load projects</p>
         <p class="text-sm text-gray-400">Please check your connection or try again later.</p>
       </div>`;
@@ -134,6 +133,8 @@ function renderProjects(projects) {
   // Re-apply view mode
   if (state.currentView === 'compact') {
     grid.className = 'grid grid-cols-1 gap-4';
+  } else {
+    grid.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-8';
   }
 }
 
@@ -199,7 +200,7 @@ function initializeViewToggle() {
   updateView(state.currentView);
 }
 
-// ONE-PAGE SCROLL SPY (Active Link Highlighting)
+// ONE-PAGE SCROLL SPY
 function initializeScrollSpy() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
@@ -225,31 +226,7 @@ function initializeScrollSpy() {
   sections.forEach((section) => observer.observe(section));
 }
 
-// THEME TOGGLE
-document.addEventListener('click', (e) => {
-  // Check if the clicked element (or its parent) is the theme toggle button
-  const btn = e.target.closest('#theme-toggle');
-  if (!btn) return;
-
-  const html = document.documentElement;
-  const isDark = html.classList.toggle('dark');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-});
-
 // INITIALIZATION
-// Wait for partials to load
-document.addEventListener('partialsLoaded', () => {
-  initializeThemeToggle();
-  loadData();
-}, { once: true });
-
-// Fallback
 document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    const header = document.getElementById('header');
-    if (!header || header.innerHTML.trim() !== '') {
-      initializeThemeToggle();
-      loadData();
-    }
-  }, 150);
+  loadData();
 });
