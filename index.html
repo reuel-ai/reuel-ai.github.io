@@ -25,17 +25,13 @@
   <!-- Styles & Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="public/css/style.css" />
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="public/js/tailwind.config.js"></script>
+  <link rel="stylesheet" href="./dist/output.css">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="./public/favicon.ico" />
 
-  <!-- Dark Mode Initialization (Prevents FOUC) -->
   <script>
+    // Prevent FOUC: Apply theme immediately before the body renders
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     } else {
@@ -46,8 +42,78 @@
 
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
 
-  <!-- Header injected here (Ensure your include.js nav links point to #hero, #projects, #contact) -->
-  <div id="header"></div>
+  <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="glass border-b border-gray-200/50 dark:border-gray-800/50 backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 shadow-sm">
+        <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4" aria-label="Main Navigation">
+            <!-- Logo -->
+            <a href="#hero" class="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl p-1">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-brain text-white text-lg" aria-hidden="true"></i>
+                </div>
+                <span class="text-2xl font-extrabold gradient-text tracking-tight">ReuelO</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex items-center space-x-8 font-semibold">
+                <li>
+                    <a href="#hero" class="nav-link relative py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition focus:outline-none focus:underline" data-page="hero">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#projects" class="nav-link relative py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition focus:outline-none focus:underline" data-page="projects">
+                        Projects
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact" class="nav-link relative py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition focus:outline-none focus:underline" data-page="contact">
+                        Contact
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300"></span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Right Side Actions -->
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/reuel-ai" target="_blank" rel="noopener noreferrer" class="hidden md:flex w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Visit my GitHub profile">
+                    <i class="fab fa-github text-xl text-gray-700 dark:text-gray-200" aria-hidden="true"></i>
+                </a>
+                <button id="theme-toggle" type="button" 
+                  onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');"
+                  class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-12 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                  aria-label="Toggle dark mode">
+                    <i class="fas fa-sun text-yellow-500 dark:hidden" aria-hidden="true"></i>
+                    <i class="fas fa-moon text-blue-400 hidden dark:block" aria-hidden="true"></i>
+                </button>
+                <button id="mobile-menu-btn" type="button" class="md:hidden w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center justify-center transition focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fas fa-bars text-gray-700 dark:text-gray-200 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" class="md:hidden fixed inset-0 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 pt-24">
+        <div class="flex flex-col p-6 space-y-2 h-full overflow-y-auto">
+            <a href="#hero" class="mobile-nav-link flex items-center gap-3 py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500" data-page="hero">
+                <i class="fas fa-home w-6 text-blue-600 dark:text-blue-400" aria-hidden="true"></i> Home
+            </a>
+            <a href="#projects" class="mobile-nav-link flex items-center gap-3 py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500" data-page="projects">
+                <i class="fas fa-folder w-6 text-blue-600 dark:text-blue-400" aria-hidden="true"></i> Projects
+            </a>
+            <a href="#contact" class="mobile-nav-link flex items-center gap-3 py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500" data-page="contact">
+                <i class="fas fa-envelope w-6 text-blue-600 dark:text-blue-400" aria-hidden="true"></i> Contact
+            </a>
+            <div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-800">
+                <a href="https://github.com/reuel-ai" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <i class="fab fa-github w-6 text-blue-600 dark:text-blue-400" aria-hidden="true"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+  </header>
 
   <main>
     <!-- 1. HERO SECTION -->
@@ -65,12 +131,10 @@
               <span class="gradient-text">ReuelO</span>
             </h1>
             <p class="text-2xl md:text-3xl mb-4 font-semibold">
-              Building robust data pipelines, scalable APIs,<br class="hidden md:block" />
-              and intelligent LLM agents.
+              Building robust data pipelines, scalable APIs, and intelligent LLM agents.
             </p>
             <p class="text-lg opacity-80 mb-8">
-              Full-Stack Foundation • SQL Data Modeling • AI/LLM Integration<br />
-              Node.js • Next.js • PostgreSQL • Python • TypeScript
+              Full-Stack Foundation • SQL Data Modeling • AI/LLM Integration • Node.js • Next.js • PostgreSQL • Python • TypeScript
             </p>
             <div class="flex flex-wrap gap-4">
               <a href="#projects" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900">
@@ -171,7 +235,7 @@
         </div>
 
         <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" aria-live="polite">
-          <!-- Projects injected by public/js/script.js -->
+          <!-- Projects injected by public/script.js -->
         </div>
       </div>
     </section>
@@ -286,12 +350,64 @@
     </section>
   </main>
 
-  <!-- Footer injected here -->
-  <div id="footer"></div>
+  <footer class="bg-gray-900 text-white py-16 border-t border-gray-800" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-12 mb-12">
+            <!-- Brand Section -->
+            <div class="md:col-span-2">
+                <a href="#hero" class="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg">
+                    <h3 class="text-2xl font-bold gradient-text">ReuelO</h3>
+                </a>
+                <p class="text-gray-400 mb-6 max-w-md leading-relaxed">
+                    AI & Full-Stack Engineering Showcase featuring scalable APIs, 
+                    robust data architectures, and intelligent LLM integrations.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://github.com/reuel-ai" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile" class="w-10 h-10 rounded-full bg-gray-800 text-gray-300 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fab fa-github text-lg" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/reuel-omwenga-7740051aa/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile" class="w-10 h-10 rounded-full bg-gray-800 text-gray-300 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fab fa-linkedin-in text-lg" aria-hidden="true"></i>
+                    </a>
+                    <a href="mailto:reuel-ai-dev@gmail.com" aria-label="Send me an email" class="w-10 h-10 rounded-full bg-gray-800 text-gray-300 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fas fa-envelope text-lg" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div>
+                <h4 class="text-lg font-bold mb-4 text-white">Core Stack</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li class="flex items-center group"><i class="fab fa-node-js text-green-500 mr-3 text-xl group-hover:scale-110 transition-transform" aria-hidden="true"></i><span class="group-hover:text-white transition-colors">Node.js / Express</span></li>
+                    <li class="flex items-center group"><i class="fas fa-database text-blue-400 mr-3 text-xl group-hover:scale-110 transition-transform" aria-hidden="true"></i><span class="group-hover:text-white transition-colors">PostgreSQL / SQL</span></li>
+                    <li class="flex items-center group"><i class="fab fa-react text-cyan-400 mr-3 text-xl group-hover:scale-110 transition-transform" aria-hidden="true"></i><span class="group-hover:text-white transition-colors">Next.js / React</span></li>
+                    <li class="flex items-center group"><i class="fab fa-python text-yellow-400 mr-3 text-xl group-hover:scale-110 transition-transform" aria-hidden="true"></i><span class="group-hover:text-white transition-colors">Python / AI</span></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-lg font-bold mb-4 text-white">Navigate</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li><a href="#hero" class="flex items-center group focus:outline-none focus:underline"><i class="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" aria-hidden="true"></i><span class="group-hover:text-white group-hover:translate-x-1 transition-all duration-300">Home</span></a></li>
+                    <li><a href="#projects" class="flex items-center group focus:outline-none focus:underline"><i class="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" aria-hidden="true"></i><span class="group-hover:text-white group-hover:translate-x-1 transition-all duration-300">Projects</span></a></li>
+                    <li><a href="#contact" class="flex items-center group focus:outline-none focus:underline"><i class="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" aria-hidden="true"></i><span class="group-hover:text-white group-hover:translate-x-1 transition-all duration-300">Contact</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+            <p>&copy; <span id="current-year">2026</span> ReuelO. All rights reserved.</p>
+            <p class="flex items-center gap-1">Built with <i class="fas fa-heart text-red-500 animate-pulse text-xs" aria-hidden="true"></i> and modern web technologies.</p>
+        </div>
+    </div>
+    <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+  </footer>
 
   <!-- Scripts -->
-  <script src="public/js/include.js" defer></script>
-  <script src="public/js/script.js" defer></script>
+  <script src="public/script.js" defer></script>
 
   <!-- Contact Form Handler -->
   <script>
