@@ -2,7 +2,6 @@ const fs = require('fs')
 const path = require('path')
 
 const ROOT_DIR = './websites'
-// UPDATE THIS to match your actual GitHub Pages repository name!
 const GITHUB_REPO_URL = 'https://github.com/reuel-ai/reuel-ai.github.io/tree/main' 
 
 const EXCLUDE_DIRS = new Set(['.git', '.github', '.vscode', 'node_modules'])
@@ -68,11 +67,9 @@ function generateProjects(categories) {
 
       const imageLink = meta.imageLink || findImage(projectDir, dir.name)
       
-      // FIX: Added leading slash for absolute GitHub Pages routing
       const hasDemo = fs.existsSync(path.join(projectDir, 'index.html'))
       const demoLink = hasDemo ? `/${projectDir.replace(/\\/g, '/')}/` : ''
 
-      // FIX: Uses the constant at the top of the file
       const repoLink = `${GITHUB_REPO_URL}/${category.path}/${dir.name}`
 
       function inferTechnology(projectDir) {
@@ -122,7 +119,6 @@ function generateStats(projects) {
 }
 
 function writeJson(file, data) {
-  // Ensure the directory exists before writing
   const dir = path.dirname(file)
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
   
@@ -131,7 +127,7 @@ function writeJson(file, data) {
 }
 
 function main() {
-  console.log('🚀 Generating portfolio data...')
+  console.log('Generating portfolio data...')
   const categories = generateCategories()
   const projects = generateProjects(categories)
   const stats = generateStats(projects)
@@ -140,7 +136,7 @@ function main() {
   writeJson(PROJECT_FILE, projects)
   writeJson(STATS_FILE, stats)
 
-  console.log(`\n✨ Success! Generated ${projects.length} projects.`)
+  console.log(`\nSuccess! Generated ${projects.length} projects.`)
 }
 
 main()

@@ -225,11 +225,31 @@ function initializeScrollSpy() {
   sections.forEach((section) => observer.observe(section));
 }
 
+// THEME TOGGLE
+document.addEventListener('click', (e) => {
+  // Check if the clicked element (or its parent) is the theme toggle button
+  const btn = e.target.closest('#theme-toggle');
+  if (!btn) return;
+
+  const html = document.documentElement;
+  const isDark = html.classList.toggle('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
 // INITIALIZATION
-document.addEventListener('partialsLoaded', loadData, { once: true });
+// Wait for partials to load
+document.addEventListener('partialsLoaded', () => {
+  initializeThemeToggle();
+  loadData();
+}, { once: true });
+
+// Fallback
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     const header = document.getElementById('header');
-    if (!header || header.innerHTML.trim() !== '') loadData();
+    if (!header || header.innerHTML.trim() !== '') {
+      initializeThemeToggle();
+      loadData();
+    }
   }, 150);
 });

@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "Personal Portfolio",
   "scripts": {
-    "build": "node public/js/generate-data.js"
+    "dev": "postcss public/style.css -o dist/output.css --watch",
+    "build": "postcss public/style.css -o dist/output.css --minify",
+    "generate": "node public/generate-data.js"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "postcss": "^8.5.29",
+    "postcss-cli": "^12.0.0",
+    "tailwindcss": "^4.3.3"
   }
 }
