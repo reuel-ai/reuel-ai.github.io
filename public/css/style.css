@@ -1,0 +1,232 @@
+/* =========================================
+   1. CSS VARIABLES & THEME CONFIGURATION
+   ========================================= */
+:root {
+    /* Brand Colors */
+    --color-primary: #3b82f6;
+    /* blue-500 */
+    --color-primary-dark: #1d4ed8;
+    /* blue-700 */
+
+    /* Glassmorphism Tokens */
+    --glass-bg-light: rgba(255, 255, 255, 0.75);
+    --glass-border-light: rgba(255, 255, 255, 0.4);
+    --glass-bg-dark: rgba(17, 24, 39, 0.75);
+    /* gray-900 @ 75% */
+    --glass-border-dark: rgba(255, 255, 255, 0.1);
+
+    /* Animation Easing */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================
+   2. BASE & TYPOGRAPHY
+   ========================================= */
+html {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+/* =========================================
+   3. UTILITIES & COMPONENTS
+   ========================================= */
+
+/* Glassmorphism */
+.glass {
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border-light);
+    transition: background-color 0.3s var(--ease-smooth), border-color 0.3s var(--ease-smooth);
+}
+
+.dark .glass {
+    background: var(--glass-bg-dark);
+    border: 1px solid var(--glass-border-dark);
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--color-primary);
+    /* Fallback for browsers that don't support background-clip */
+    display: inline-block;
+}
+
+/* =========================================
+   4. ANIMATIONS & INTERACTIONS
+   ========================================= */
+
+/* Progressive Enhancement Fade-In */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+}
+
+/* Only apply hidden state if JS is enabled (prevents content hiding if JS fails) */
+.js-enabled .fade-in:not(.visible) {
+    opacity: 0;
+    transform: translateY(24px);
+    will-change: opacity, transform;
+    /* Performance hint for compositor */
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Card Hover Effects */
+.project-card:hover img {
+    filter: brightness(0.95) saturate(1.15);
+}
+
+/* Subtle lift for generic cards (if not using Tailwind hover utilities) */
+.card-hover {
+    transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   5. NAVIGATION & HEADER
+   ========================================= */
+
+/* Header scroll shrink effect */
+#header.scrolled .glass,
+#header.scrolled nav {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    transition: padding 0.3s var(--ease-smooth);
+}
+
+/* Active link underline animation */
+/* Assumes the span has a default width of 0 and height of 2px in your HTML/Tailwind */
+.nav-link:hover span,
+.nav-link.active span {
+    width: 100% !important;
+}
+
+/* Focus ring for accessibility (e.g., category buttons) */
+.category-btn[aria-expanded='true'],
+.category-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-primary);
+}
+
+/* =========================================
+   6. TIMELINE (Responsive)
+   ========================================= */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-dark));
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.timeline-item {
+    position: relative;
+    z-index: 1;
+}
+
+/* Mobile fallback for timeline: move line to the left */
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 20px;
+    }
+}
+
+/* =========================================
+   7. DARK MODE & FORM OVERRIDES
+   ========================================= */
+/* Note: It is highly recommended to use Tailwind's `dark:` classes instead 
+   of these global overrides. These are kept only to enforce your specific 
+   contrast requirements if Tailwind's defaults aren't sufficient. */
+
+.dark .text-gray-900 {
+    color: #f3f4f6;
+}
+
+/* gray-100 */
+.dark .text-gray-700 {
+    color: #e5e7eb;
+}
+
+/* gray-200 */
+.dark .text-gray-600 {
+    color: #d1d5db;
+}
+
+/* gray-300 */
+.dark .text-gray-500,
+.dark .text-gray-400 {
+    color: #9ca3af;
+}
+
+/* gray-400 */
+
+/* Form Elements */
+input,
+select,
+textarea {
+    color: #1f2937;
+    /* gray-800 */
+    transition: border-color 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth);
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+    color: #f3f4f6;
+    /* gray-100 */
+    background-color: #1f2937;
+    /* gray-800 */
+    border-color: #374151;
+    /* gray-700 */
+}
+
+/* Placeholder Visibility */
+::placeholder {
+    color: #9ca3af;
+    /* gray-400 */
+    opacity: 1;
+}
+
+.dark ::placeholder {
+    color: #6b7280;
+    /* gray-500 */
+}
+
+/* =========================================
+   8. CRITICAL FIX: STACKING CONTEXTS
+   ========================================= */
+/* 
+  REMOVED: 
+  a, button, input, select, textarea { position: relative; z-index: 10; }
+  
+  WHY: Applying global z-index to ALL interactive elements creates "stacking context hell". 
+  It breaks modals, dropdowns, tooltips, and fixed headers. 
+  
+  FIX: If a specific element is being hidden behind a .glass background, 
+  give the .glass background a lower z-index (e.g., z-0) and the specific 
+  button/link a higher z-index (e.g., relative z-10) individually in your HTML/Tailwind.
+*/

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kitchen Sink</title>
+  </head>
+  <body>
+    <section id="table">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Item A</td>
+            <td>$10</td>
+            <td>In Stock</td>
+          </tr>
+          <tr>
+            <td>Item B</td>
+            <td>$20</td>
+            <td>Out of Stock</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <style>
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 1rem 0;
+        }
+        th,
+        td {
+          padding: 12px;
+          border: 1px solid #ccc;
+          text-align: left;
+        }
+        thead {
+          background-color: #f2f2f2;
+        }
+      </style>
+    </section>
+
+    <section id="form">
+      <form>
+        <label>Name:</label>
+        <input type="text" placeholder="Your name" />
+
+        <label>Email:</label>
+        <input type="email" placeholder="you@example.com" />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <style>
+        form {
+          max-width: 300px;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        input {
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        button {
+          background: #007bff;
+          color: white;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      </style>
+    </section>
+
+    <section id="card">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150" alt="Card Image" />
+        <div class="content">
+          <h3>Card Title</h3>
+          <p>This is a simple card with an image, title and text.</p>
+        </div>
+      </div>
+
+      <style>
+        .card {
+          width: 300px;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          margin: 1rem;
+        }
+        .card img {
+          width: 100%;
+        }
+        .content {
+          padding: 1rem;
+        }
+      </style>
+    </section>
+
+    <section id="gallery">
+      <div class="gallery">
+        <img src="https://via.placeholder.com/150" alt="Img 1" />
+        <img src="https://via.placeholder.com/150" alt="Img 2" />
+        <img src="https://via.placeholder.com/150" alt="Img 3" />
+      </div>
+
+      <style>
+        .gallery {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+        .gallery img {
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
+          border: 2px solid #eee;
+          border-radius: 8px;
+        }
+      </style>
+    </section>
+
+    <section id="article">
+      <article>
+        <h2>Why Learning HTML Matters</h2>
+        <p><em>Published on April 8, 2025</em></p>
+        <p>
+          HTML is the foundation of every webpage you visit. It helps you
+          structure content clearly and semantically.
+        </p>
+      </article>
+
+      <style>
+        article {
+          max-width: 600px;
+          margin: 2rem auto;
+          font-family: sans-serif;
+          line-height: 1.6;
+        }
+        h2 {
+          color: #333;
+        }
+        em {
+          color: #666;
+          font-size: 0.9em;
+        }
+      </style>
+    </section>
+
+    <section id="pricing">
+      <div class="pricing">
+        <div class="plan">
+          <h3>Basic</h3>
+          <p class="price">$10/mo</p>
+          <p>✔ 1 Project</p>
+          <p>✔ Email Support</p>
+          <button>Choose</button>
+        </div>
+      </div>
+
+      <style>
+        .pricing {
+          display: flex;
+          justify-content: center;
+          padding: 2rem;
+        }
+        .plan {
+          border: 1px solid #ccc;
+          padding: 1rem;
+          text-align: center;
+          max-width: 200px;
+          border-radius: 10px;
+        }
+        .price {
+          font-size: 1.5rem;
+          color: green;
+          margin: 1rem 0;
+        }
+        button {
+          padding: 10px;
+          background: #28a745;
+          color: white;
+          border: none;
+          border-radius: 6px;
+        }
+      </style>
+    </section>
+
+    <section id="cart">
+      <div class="cart-item">
+        <img src="https://via.placeholder.com/80" alt="Product" />
+        <div class="info">
+          <p>Product Name</p>
+          <p>$15.00</p>
+          <button>Remove</button>
+        </div>
+      </div>
+
+      <style>
+        .cart-item {
+          display: flex;
+          gap: 10px;
+          border-bottom: 1px solid #ddd;
+          padding: 10px 0;
+          align-items: center;
+        }
+        .info p {
+          margin: 0;
+        }
+        button {
+          margin-top: 5px;
+          padding: 5px 10px;
+          background: red;
+          color: white;
+          border: none;
+          border-radius: 4px;
+        }
+      </style>
+    </section>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9fafb;
+        color: #1f2937;
+        line-height: 1.6;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+    </style>
+  </body>
+</html>
