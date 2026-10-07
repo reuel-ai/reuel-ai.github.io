@@ -1,0 +1,5 @@
+# Ignore node_modules inside the nested websites folders
+websites/**/node_modules/
+websites/**/dist/
+websites/**/build/
+.DS_Store

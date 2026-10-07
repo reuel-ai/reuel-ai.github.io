@@ -1,0 +1,231 @@
+[
+  {
+    "id": "elite-properties",
+    "name": "Elite Properties",
+    "category": "corporate-sites",
+    "categoryLabel": "Corporate Sites",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=elite-properties",
+    "demoLink": "/websites/corporate-sites/elite-properties/",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/corporate-sites/elite-properties",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "global-journeys",
+    "name": "Global Journeys",
+    "category": "corporate-sites",
+    "categoryLabel": "Corporate Sites",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=global-journeys",
+    "demoLink": "/websites/corporate-sites/global-journeys/",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/corporate-sites/global-journeys",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "lex-chambers",
+    "name": "Lex Chambers",
+    "category": "corporate-sites",
+    "categoryLabel": "Corporate Sites",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=lex-chambers",
+    "demoLink": "/websites/corporate-sites/lex-chambers/",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/corporate-sites/lex-chambers",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "medicare-pharmacy",
+    "name": "Medicare Pharmacy",
+    "category": "corporate-sites",
+    "categoryLabel": "Corporate Sites",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=medicare-pharmacy",
+    "demoLink": "/websites/corporate-sites/medicare-pharmacy/",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/corporate-sites/medicare-pharmacy",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "st-judes-hospital",
+    "name": "St Judes Hospital",
+    "category": "corporate-sites",
+    "categoryLabel": "Corporate Sites",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=st-judes-hospital",
+    "demoLink": "/websites/corporate-sites/st-judes-hospital/",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/corporate-sites/st-judes-hospital",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "sweet-delights-bakery",
+    "name": "Sweet Delights Bakery",
+    "category": "corporate-sites",
+    "categoryLabel": "Corporate Sites",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5",
+      "JavaScript"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=sweet-delights-bakery",
+    "demoLink": "/websites/corporate-sites/sweet-delights-bakery/",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/corporate-sites/sweet-delights-bakery",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "unity-university",
+    "name": "Unity University",
+    "category": "corporate-sites",
+    "categoryLabel": "Corporate Sites",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=unity-university",
+    "demoLink": "/websites/corporate-sites/unity-university/",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/corporate-sites/unity-university",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "event",
+    "name": "Event",
+    "category": "landing-pages",
+    "categoryLabel": "Landing Pages",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=event",
+    "demoLink": "",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/landing-pages/event",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "portfolio",
+    "name": "Portfolio",
+    "category": "landing-pages",
+    "categoryLabel": "Landing Pages",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=portfolio",
+    "demoLink": "",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/landing-pages/portfolio",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "product",
+    "name": "Product",
+    "category": "landing-pages",
+    "categoryLabel": "Landing Pages",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=product",
+    "demoLink": "",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/landing-pages/product",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "saas",
+    "name": "Saas",
+    "category": "landing-pages",
+    "categoryLabel": "Landing Pages",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=saas",
+    "demoLink": "",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/landing-pages/saas",
+    "created": "",
+    "updated": ""
+  },
+  {
+    "id": "startup",
+    "name": "Startup",
+    "category": "landing-pages",
+    "categoryLabel": "Landing Pages",
+    "description": "",
+    "featured": false,
+    "responsive": true,
+    "difficulty": "Beginner",
+    "technology": [
+      "HTML5"
+    ],
+    "tags": [],
+    "imageLink": "https://via.placeholder.com/600x400?text=startup",
+    "demoLink": "",
+    "repoLink": "https://github.com/reuel-ai/reuel-ai.github.io/tree/main/websites/landing-pages/startup",
+    "created": "",
+    "updated": ""
+  }
+]

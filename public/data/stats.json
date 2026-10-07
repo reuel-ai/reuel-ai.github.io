@@ -1,0 +1,13 @@
+{
+  "totalProjects": 12,
+  "featuredProjects": 0,
+  "responsiveProjects": 12,
+  "technologies": [
+    "HTML5",
+    "JavaScript"
+  ],
+  "categories": {
+    "corporate-sites": 7,
+    "landing-pages": 5
+  }
+}

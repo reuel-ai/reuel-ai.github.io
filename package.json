@@ -1,0 +1,8 @@
+{
+  "name": "reuel-ai-portfolio",
+  "version": "1.0.0",
+  "description": "Personal Portfolio",
+  "scripts": {
+    "build": "node public/js/generate-data.js"
+  }
+}
